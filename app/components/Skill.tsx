@@ -105,13 +105,13 @@ const TechStackSection = () => {
                         Technical <span className="text-emerald-400">Skills</span>
                     </h2>
                     <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-                        Technologies and tools I work with across full-stack development
+                        A showcase of the technologies and tools I’ve mastered across the full stack, reflecting my versatility and passion for building efficient, modern applications.
                     </p>
                 </motion.div>
 
                 {/* Two scrollable rows */}
                 {[row1, row2].map((row, rowIndex) => (
-                    <div key={rowIndex} className="relative mb-8">
+                    <div key={rowIndex} className="relative mb-8 ">
                         <div className="pointer-events-none absolute top-0 left-0 h-full w-12 bg-gradient-to-r from-gray-900 to-transparent z-20" />
                         <div className="pointer-events-none absolute top-0 right-0 h-full w-12 bg-gradient-to-l from-gray-900 to-transparent z-20" />
 
@@ -121,7 +121,7 @@ const TechStackSection = () => {
                             onMouseMove={handleDragging}
                             onMouseUp={handleDragEnd}
                             onMouseLeave={handleDragEnd}
-                            className={`flex gap-6 overflow-x-auto no-scrollbar px-2 pb-4 cursor-grab active:cursor-grabbing ${isDragging ? 'select-none' : 'select-auto'
+                            className={`flex gap-6 overflow-x-auto no-scrollbar pt-3 px-2 pb-4 cursor-grab active:cursor-grabbing ${isDragging ? 'select-none' : 'select-auto'
                                 }`}
                         >
                             {row.map((skill, i) => (

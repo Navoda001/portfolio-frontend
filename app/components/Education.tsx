@@ -141,20 +141,20 @@ const EducationSection = () => {
                     className="space-y-6"
                 >
                     {/* Header */}
-                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-10"
-                >
-                    <h2 className="text-4xl lg:text-5xl font-bold text-white">
-                        My <span className="text-emerald-400">Education</span>
-                    </h2>
-                    <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-                        Technologies and tools I work with across full-stack development
-                    </p>
-                </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center mb-10"
+                    >
+                        <h2 className="text-4xl lg:text-5xl font-bold text-white">
+                            My <span className="text-emerald-400">Education</span>
+                        </h2>
+                        <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+                            An overview of my academic background, from school to university, highlighting the key milestones that shaped my path in technology.
+                        </p>
+                    </motion.div>
 
                     {/* Scrollable cards */}
                     <motion.div
@@ -164,7 +164,7 @@ const EducationSection = () => {
                         onMouseUp={handleDragEnd}
                         onMouseLeave={handleDragEnd}
                         onMouseMove={handleDragging}
-                        className={`flex overflow-x-auto overflow-y-hidden no-scrollbar snap-x snap-mandatory gap-6 pb-6 cursor-grab active:cursor-grabbing ${isDragging ? 'select-none' : 'select-auto'
+                        className={`flex overflow-x-auto overflow-y-hidden no-scrollbar snap-x snap-mandatory gap-6 pl-3 py-6 cursor-grab active:cursor-grabbing ${isDragging ? 'select-none' : 'select-auto'
                             }`}
                     >
 

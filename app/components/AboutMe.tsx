@@ -12,8 +12,8 @@ const AboutMe = () => {
     };
 
     return (
-        <section className="max-w-4xl mx-auto py-32 px-6 bg-gray-800/10 rounded-lg text-white">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="max-w-6xl mx-auto py-32 px-6 bg-gray-800/10 rounded-lg text-white">
+            <div className=" px-4 sm:px-6 lg:px-8">
                 {/* Heading */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
