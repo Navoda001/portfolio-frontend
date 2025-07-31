@@ -179,11 +179,34 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
   return (
     <motion.section
       ref={ref}
-      className="py-20 px-4 bg-gray-900"
+      className="py-20 px-4 bg-gray-900 mt-10"
       variants={containerVariants}
       initial="hidden"
       animate={mainControls}
     >
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 bg-emerald-400/20"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              height: `${Math.random() * 100 + 50}px`,
+              transform: `rotate(${Math.random() * 360}deg)`,
+            }}
+            animate={{
+              opacity: [0.2, 0.8, 0.2],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: Math.random() * 3 + 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -266,7 +289,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
           {/* Contact Form */}
           <motion.form
             onSubmit={handleSubmit}
-            className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 space-y-6"
+            className="bg-gray-900/5 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 space-y-6"
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -293,7 +316,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
                       value={formData[name as keyof ContactFormData] as string}
                       onChange={handleInputChange}
                       required
-                      className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all duration-300 outline-none"
+                      className="w-full pl-10 pr-4 py-3 bg-gray-800/10 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all duration-300 outline-none"
                       placeholder={name === 'firstName' ? 'John' : 'Doe'}
                     />
                   </div>
@@ -326,7 +349,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
                       value={formData[id as keyof ContactFormData] as string}
                       onChange={handleInputChange}
                       required={required}
-                      className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all duration-300 outline-none"
+                      className="w-full pl-10 pr-4 py-3 bg-gray-800/10 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all duration-300 outline-none"
                       placeholder={placeholder}
                     />
                   </div>
@@ -382,7 +405,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
                   onChange={(e) => handleInputChange(e)}
                   rows={5}
                   required
-                  className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all duration-300 outline-none resize-none"
+                  className="w-full pl-10 pr-4 py-3 bg-gray-800/10 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all duration-300 outline-none resize-none"
                   placeholder="Tell me about your project..."
                 />
               </div>
@@ -392,11 +415,10 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
             <motion.button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full py-4 px-6 rounded-xl font-semibold text-white transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-emerald-500/50 ${
-                isSubmitting
+              className={`w-full py-4 px-6 rounded-xl font-semibold text-white transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-emerald-500/50 ${isSubmitting
                   ? 'bg-gray-600 cursor-not-allowed'
                   : 'bg-emerald-500 hover:bg-emerald-400 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40'
-              }`}
+                }`}
               variants={buttonVariants}
               whileHover="hover"
               whileTap="tap"
@@ -404,7 +426,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
               <div className="flex items-center justify-center space-x-2">
                 {isSubmitting ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <div className="w-5 h-5 border-2 border-white/50 border-t-white rounded-full animate-spin" />
                     <span>Sending...</span>
                   </>
                 ) : (

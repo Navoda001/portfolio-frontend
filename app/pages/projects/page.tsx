@@ -3,10 +3,10 @@
 import { motion, useAnimation, useInView, AnimatePresence, Variants } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { 
-  ExternalLink, 
-  Github, 
-  ChevronLeft, 
+import {
+  ExternalLink,
+  Github,
+  ChevronLeft,
   ChevronRight,
   Code,
   Monitor,
@@ -82,7 +82,7 @@ const ProjectShowcase = () => {
     },
   };
 
-  const itemVariants:Variants = {
+  const itemVariants: Variants = {
     hidden: { y: 50, opacity: 0 },
     visible: {
       y: 0,
@@ -106,8 +106,31 @@ const ProjectShowcase = () => {
   const currentProjectData = projects[currentProject];
 
   return (
-    <section ref={ref} className="py-20 bg-gray-900 relative overflow-hidden">
+    <section ref={ref} className="py-20 mt-10 bg-gray-900 relative overflow-hidden">
       {/* Background Effects */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 bg-emerald-400/20"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              height: `${Math.random() * 100 + 50}px`,
+              transform: `rotate(${Math.random() * 360}deg)`,
+            }}
+            animate={{
+              opacity: [0.2, 0.8, 0.2],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: Math.random() * 3 + 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
       <div className="absolute inset-0">
         <motion.div
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"
@@ -171,7 +194,7 @@ const ProjectShowcase = () => {
                 </motion.div>
 
                 {/* Title */}
-                <motion.h3 
+                <motion.h3
                   className="text-4xl lg:text-5xl font-bold text-white leading-tight"
                   layoutId="projectTitle"
                 >
@@ -179,7 +202,7 @@ const ProjectShowcase = () => {
                 </motion.h3>
 
                 {/* Description */}
-                <motion.p 
+                <motion.p
                   className="text-gray-300 text-lg leading-relaxed"
                   layoutId="projectDescription"
                 >
@@ -197,8 +220,8 @@ const ProjectShowcase = () => {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.1 * index }}
-                        whileHover={{ 
-                          scale: 1.1, 
+                        whileHover={{
+                          scale: 1.1,
                           backgroundColor: "rgba(16, 185, 129, 0.1)",
                           color: "rgb(52, 211, 153)"
                         }}
@@ -240,7 +263,7 @@ const ProjectShowcase = () => {
           </motion.div>
 
           {/* Right Content - Project Image */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="relative"
             onMouseEnter={() => setIsHovered(true)}
@@ -268,7 +291,7 @@ const ProjectShowcase = () => {
                     height={400}
                     className="w-full h-auto object-cover"
                   />
-                  
+
                   {/* Overlay */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-t from-emerald-900/50 via-transparent to-transparent"
@@ -303,11 +326,11 @@ const ProjectShowcase = () => {
                 {/* Floating Elements */}
                 <motion.div
                   className="absolute -top-4 -right-4 w-20 h-20 bg-emerald-500/10 rounded-full backdrop-blur-md border border-emerald-500/20 flex items-center justify-center"
-                  animate={{ 
+                  animate={{
                     rotate: 360,
                     scale: isHovered ? 1.1 : 1
                   }}
-                  transition={{ 
+                  transition={{
                     rotate: { duration: 10, repeat: Infinity, ease: "linear" },
                     scale: { duration: 0.3 }
                   }}
@@ -355,7 +378,7 @@ const ProjectShowcase = () => {
         </motion.div>
 
         {/* Project Indicators */}
-        <motion.div 
+        <motion.div
           variants={itemVariants}
           className="flex justify-center space-x-3 mt-12"
         >
@@ -363,9 +386,8 @@ const ProjectShowcase = () => {
             <motion.button
               key={index}
               onClick={() => setCurrentProject(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                currentProject === index ? 'bg-emerald-400 w-8' : 'bg-gray-600'
-              }`}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${currentProject === index ? 'bg-emerald-400 w-8' : 'bg-gray-600'
+                }`}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.8 }}
             />
