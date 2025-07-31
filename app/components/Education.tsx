@@ -57,7 +57,7 @@ const EducationSection = () => {
             duration: '6 months',
             skills: ['React', 'Node.js', 'MongoDB', 'TypeScript'],
             color: 'from-emerald-500 to-teal-600',
-            img:'https://uom.lk/assets/images/Uni_emblem.jpg',
+            img: 'https://uom.lk/assets/images/Uni_emblem.jpg',
         },
         {
             year: '2022',
@@ -67,7 +67,7 @@ const EducationSection = () => {
             duration: '4 months',
             skills: ['HTML5', 'CSS3', 'JavaScript', 'React'],
             color: 'from-blue-500 to-cyan-600',
-            img:'https://uom.lk/assets/images/Uni_emblem.jpg',
+            img: 'https://uom.lk/assets/images/Uni_emblem.jpg',
 
         },
         {
@@ -78,7 +78,7 @@ const EducationSection = () => {
             duration: '1 year',
             skills: ['Python', 'Java', 'Data Structures', 'Algorithms'],
             color: 'from-purple-500 to-indigo-600',
-            img:'https://uom.lk/assets/images/Uni_emblem.jpg',
+            img: 'https://uom.lk/assets/images/Uni_emblem.jpg',
         },
         {
             year: '2019',
@@ -88,7 +88,7 @@ const EducationSection = () => {
             duration: '8 months',
             skills: ['PHP', 'MySQL', 'WordPress', 'jQuery'],
             color: 'from-orange-500 to-red-600',
-            img:'https://uom.lk/assets/images/Uni_emblem.jpg',
+            img: 'https://uom.lk/assets/images/Uni_emblem.jpg',
         }
     ];
 
@@ -141,36 +141,20 @@ const EducationSection = () => {
                     className="space-y-6"
                 >
                     {/* Header */}
-                    <motion.div
-                        variants={cardVariants}
-                        className="space-y-4"
-                    >
-                        <div className="flex items-center space-x-4">
-
-                            <motion.div
-                                className="w-12 h-12 bg-emerald-500/10 rounded-lg flex items-center justify-center"
-                                initial={{ scale: 0, rotate: -180 }}
-                                animate={{ scale: 1, rotate: 0 }}
-                                transition={{ type: 'spring', stiffness: 300 }}
-                            >
-                                <GraduationCap className="text-emerald-400" size={24} />
-                            </motion.div>
-                            <motion.h2
-                                className="text-4xl lg:text-5xl font-bold text-white"
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.3 }}
-                            >
-                                My Education
-                            </motion.h2>
-                        </div>
-                        <motion.p
-                            className="text-gray-300 text-lg leading-relaxed max-w-2xl"
-                            variants={cardVariants}
-                        >
-                            Explore the highlights of my learning journey and certifications.
-                        </motion.p>
-                    </motion.div>
+                   <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-10"
+                >
+                    <h2 className="text-4xl lg:text-5xl font-bold text-white">
+                        My <span className="text-emerald-400">Education</span>
+                    </h2>
+                    <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+                        Technologies and tools I work with across full-stack development
+                    </p>
+                </motion.div>
 
                     {/* Scrollable cards */}
                     <motion.div
@@ -208,8 +192,8 @@ const EducationSection = () => {
                                         >
                                             <img className="w-12 h-12 rounded-full object-cover" src={item.img} alt="Profile" />
                                         </motion.div>
-                                        
-                                        
+
+
                                         <motion.div
                                             className="inline-flex items-center space-x-2 bg-emerald-500/10 text-emerald-400 px-4 py-2 rounded-full text-sm font-semibold"
                                             whileHover={{ scale: 1.05 }}
