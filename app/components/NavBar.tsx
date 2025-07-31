@@ -22,10 +22,10 @@ const Navbar = () => {
   const navItems = [
     { name: 'Introduction', href: '/' },
     { name: 'Resume', href: '/pages/resume' },
-    { name: 'Projects', href: '/projects' },
+    { name: 'Projects', href: '/pages/projects' },
     { name: 'Certifications', href: '/certifications' },
     { name: 'Testimonials', href: '/services' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Contact', href: '/pages/contactMe' },
   ];
 
   const isActive = (href: string) => {
