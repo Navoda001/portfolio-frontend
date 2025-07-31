@@ -12,8 +12,8 @@ const AboutMe = () => {
     };
 
     return (
-        <section className="max-w-6xl mx-auto py-32 px-6 bg-gray-800/10 rounded-lg text-white">
-            <div className=" px-4 sm:px-6 lg:px-8">
+        <section className="rounded-lg text-white bg-gray-900/10 relative">
+            <div className="max-w-6xl mx-auto px-6 sm:px-6 lg:px-8 py-32">
                 {/* Heading */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -75,9 +75,6 @@ const AboutMe = () => {
 
                 <div className="mt-10 h-1 w-24 bg-gradient-to-r from-emerald-400/50 to-transparent rounded-full mx-auto opacity-60" />
             </div>
-
-
-
         </section>
 
     );

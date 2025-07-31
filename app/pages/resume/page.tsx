@@ -208,7 +208,7 @@ const WhyHireMeSection = () => {
                                 animate="visible"
                                 className="bg-gray-800/5 backdrop-blur-sm rounded-2xl border border-gray-700/50"
                             >
-                                <div className="space-y-1">
+                                <div className="space-y-1 ">
 
                                     {activeTab === 'Education' && <EducationSection />}
                                     {activeTab === 'Skills' && <TechStackSection />}

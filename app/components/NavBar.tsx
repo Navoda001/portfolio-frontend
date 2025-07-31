@@ -21,7 +21,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Introduction', href: '/' },
-    { name: 'Resume', href: '/resume' },
+    { name: 'Resume', href: '/pages/resume' },
     { name: 'Projects', href: '/projects' },
     { name: 'Certifications', href: '/certifications' },
     { name: 'Testimonials', href: '/services' },

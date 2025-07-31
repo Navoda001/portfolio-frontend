@@ -104,7 +104,7 @@ const Introduction = () => {
                 ))}
             </div>
 
-            <div className="relative z-10 w-full px-4 sm:px-6 lg:px-12 pt-20 lg:pt-24">
+            <div className="relative z-10 w-full px-4 sm:px-6 lg:px-44 pt-20 lg:pt-24">
 
                 <motion.div
                     variants={containerVariants}
@@ -204,7 +204,7 @@ const Introduction = () => {
                     {/* Right Content - Profile Image */}
                     <motion.div
                         variants={itemVariants}
-                        className="relative flex justify-center lg:justify-end"
+                        className="relative flex justify-center lg:justify-end mt-3"
                     >
                         <div className="relative">
                             {/* Outer Glow Ring */}
