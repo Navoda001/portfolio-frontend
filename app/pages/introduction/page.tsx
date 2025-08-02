@@ -190,6 +190,7 @@ const Introduction = () => {
                                     <motion.a
                                         key={social.label}
                                         href={social.href}
+                                        target="_blank"
                                         className="w-12 h-12 rounded-full border-2 border-gray-600 flex items-center justify-center text-gray-400 hover:border-emerald-400 hover:text-emerald-400 transition-all duration-300"
                                         whileHover={{ scale: 1.1, rotate: 5 }}
                                         whileTap={{ scale: 0.9 }}
