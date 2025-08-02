@@ -143,15 +143,15 @@ const ProjectShowcase = () => {
 
   const currentProjectData = projects[currentProject];
 
-const maxVisibleDots = 4;
+  const maxVisibleDots = 4;
 
-// Calculate the first index to show
-const startIndex = Math.min(
-  Math.max(currentProject - Math.floor(maxVisibleDots / 2), 0),
-  Math.max(projects.length - maxVisibleDots, 0)
-);
+  // Calculate the first index to show
+  const startIndex = Math.min(
+    Math.max(currentProject - Math.floor(maxVisibleDots / 2), 0),
+    Math.max(projects.length - maxVisibleDots, 0)
+  );
 
-const visibleProjects = projects.slice(startIndex, startIndex + maxVisibleDots);
+  const visibleProjects = projects.slice(startIndex, startIndex + maxVisibleDots);
 
 
   return (
@@ -467,28 +467,40 @@ const visibleProjects = projects.slice(startIndex, startIndex + maxVisibleDots);
 
         {/* Project Indicators */}
         <motion.div
-  variants={itemVariants}
-  className="flex justify-center space-x-3 mt-12"
->
-  {visibleProjects.map((_, index) => {
-    const actualIndex = startIndex + index;
-    return (
-      <motion.button
-        key={actualIndex}
-        onClick={() => setCurrentProject(actualIndex)}
-        className={`w-3 h-3 rounded-full transition-all duration-300 ${
-          currentProject === actualIndex
-            ? 'bg-emerald-400 w-8'
-            : 'bg-gray-600'
-        }`}
-        whileHover={{ scale: 1.2 }}
-        whileTap={{ scale: 0.8 }}
-      />
-    );
-  })}
-</motion.div>
-
+          variants={itemVariants}
+          className="flex justify-center space-x-3 mt-12"
+        >
+          {visibleProjects.map((_, index) => {
+            const actualIndex = startIndex + index;
+            return (
+              <motion.button
+                key={actualIndex}
+                onClick={() => setCurrentProject(actualIndex)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${currentProject === actualIndex
+                  ? 'bg-emerald-400 w-8'
+                  : 'bg-gray-600'
+                  }`}
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.8 }}
+              />
+            );
+          })}
+        </motion.div>
+  <div className="mt-10 flex justify-center z-50">
+        <motion.a
+          href="https://github.com/Navoda001?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View All Certifications on LinkedIn"
+          className="flex max-w-4xl items-center space-x-2 bg-emerald-600/50 text-gray-300 px-6 py-3 rounded-full font-semibold border border-slate-700 transition-all duration-300 hover:border-emerald-500 hover:text-emerald-400"
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <span>View All Projects</span>
+        </motion.a>
       </div>
+      </div>
+    
     </section>
   );
 };

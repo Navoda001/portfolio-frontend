@@ -106,11 +106,11 @@ const EducationSection = () => {
             title: 'Bsc (Hons) in Information Technology',
             institution: 'UOM - University of Moratuwa',
             type: 'Moratuwa,Sri Lanka',
-            duration: '4 years',
+            duration: '',
             skills: [],
             color: 'from-orange-500 to-red-600',
             info: "I am a third-year undergraduate at the Faculty of Information Technology, University of Moratuwa, with a strong passion for software development and innovative problem-solving. My academic journey has equipped me with solid technical skills and hands-on experience in building practical solutions across various technologies.",
-            result: "CGPA:3.25/4.00 (May 2025)",
+            result: "",
             img: '/education/education4.jpg',
         }
     ];
