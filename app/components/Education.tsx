@@ -9,7 +9,8 @@ import {
     Award,
     BookOpen,
     Star,
-    Zap
+    Zap,
+    Check
 } from 'lucide-react';
 import type { Variants } from "framer-motion";
 import { img } from 'motion/react-client';
@@ -50,45 +51,67 @@ const EducationSection = () => {
 
     const educationData = [
         {
-            year: '2023',
-            title: 'Full Stack Web Development Bootcamp',
-            institution: 'Online Course Platform',
-            type: 'Bootcamp',
-            duration: '6 months',
-            skills: ['React', 'Node.js', 'MongoDB', 'TypeScript'],
+            year: '2017',
+            title: 'GCE Ordinary Level',
+            institution: 'Mr/ Siddhartha College',
+            type: 'Matara, Sri Lanka',
+            duration: '',
+            skills: [],
             color: 'from-emerald-500 to-teal-600',
-            img: 'https://uom.lk/assets/images/Uni_emblem.jpg',
+            info: "I completed my GCE Ordinary Level examinations with Commerce, Information Technology, and Music as my basket subjects. This combination allowed me to develop both analytical and creative skills, strengthening my understanding of business concepts, technology, and artistic expression.",
+            result: "A8 C1",
+            img: '/education/education1.jpeg',
         },
         {
-            year: '2022',
-            title: 'Front-end Track',
-            institution: 'Codecademy',
-            type: 'Certification',
-            duration: '4 months',
-            skills: ['HTML5', 'CSS3', 'JavaScript', 'React'],
+            year: '2021',
+            title: 'Advanced Level',
+            institution: 'Mahinda College Galle',
+            type: 'Galle, Sri Lanka',
+            duration: '',
+            skills: [],
+            info: "I completed my GCE Advanced Level in the Science stream with Biology, Chemistry, and Physics, gaining a strong foundation in scientific principles, analytical thinking, and problem-solving skills.",
+            result: "ABB passes",
             color: 'from-blue-500 to-cyan-600',
-            img: 'https://uom.lk/assets/images/Uni_emblem.jpg',
+            img: '/education/education2.jpeg',
 
         },
         {
-            year: '2020 - 2021',
-            title: 'Programming Course',
-            institution: 'Online Course',
-            type: 'Certificate',
-            duration: '1 year',
-            skills: ['Python', 'Java', 'Data Structures', 'Algorithms'],
+            year: '2025',
+            title: 'software development Course',
+            institution: 'IJSE - Institute of Software Engineering',
+            type: 'Galle, Sri Lanka',
+            duration: '6 month',
+            skills: [
+                'Java',
+                'Swing',
+                'JavaFX',
+                'MVC Architecture',
+                'Layered Architecture',
+                'MySQL',
+                'HTML',
+                'CSS',
+                'JavaScript',
+                'Spring Boot',
+                'React',
+                'MongoDB',
+                'Node.js',
+                'Express.js'
+            ],
+            result: "Passed",
             color: 'from-purple-500 to-indigo-600',
-            img: 'https://uom.lk/assets/images/Uni_emblem.jpg',
+            img: '/education/education3.jpeg',
         },
         {
-            year: '2019',
-            title: 'Certified Web Developer',
-            institution: 'Tech Institute',
-            type: 'Professional',
-            duration: '8 months',
-            skills: ['PHP', 'MySQL', 'WordPress', 'jQuery'],
+            year: '2023-2027',
+            title: 'Bsc (Hons) in Information Technology',
+            institution: 'UOM - University of Moratuwa',
+            type: 'Moratuwa,Sri Lanka',
+            duration: '4 years',
+            skills: [],
             color: 'from-orange-500 to-red-600',
-            img: 'https://uom.lk/assets/images/Uni_emblem.jpg',
+            info:"I am a third-year undergraduate at the Faculty of Information Technology, University of Moratuwa, with a strong passion for software development and innovative problem-solving. My academic journey has equipped me with solid technical skills and hands-on experience in building practical solutions across various technologies.",
+            result: "CGPA:3.25/4.00 (May 2025)",
+            img: '/education/education4.jpg',
         }
     ];
 
@@ -187,10 +210,10 @@ const EducationSection = () => {
                                 <div className="relative space-y-6">
                                     <div className="flex justify-between items-center">
                                         <motion.div
-                                            className="inline-flex items-center bg-emerald-500/10 border-2 border-emerald-400 rounded-full"
+                                            className="inline-flex p-1 items-center bg-emerald-500/10 border-2 border-emerald-400 rounded-full"
                                             whileHover={{ scale: 1.05 }}
                                         >
-                                            <img className="w-12 h-12 rounded-full object-cover" src={item.img} alt="Profile" />
+                                            <img className="w-12 h-12 rounded-full object-cover" src={item.img} alt="Education " />
                                         </motion.div>
 
 
@@ -212,44 +235,72 @@ const EducationSection = () => {
                                         >
                                             {item.title}
                                         </motion.h3>
-                                        <div className="flex items-center space-x-4 text-gray-400 text-sm">
-                                            <div className="flex items-center space-x-1">
-                                                <MapPin size={14} />
-                                                <span>{item.institution}</span>
+                                        <div className="flex items-start space-x-4 text-gray-400 text-lg">
+                                            <div className="flex items-start space-x-1">
+                                                <GraduationCap size={14} className="mt-1 flex-shrink-0" />
+                                                <div className="leading-tight">
+                                                    {item.institution.includes(' - ') ? (
+                                                        <>
+                                                            <div>{item.institution.split(' - ')[0]}</div>
+                                                            <div className="text-sm opacity-80">{item.institution.split(' - ')[1]}</div>
+                                                        </>
+                                                    ) : (
+                                                        <span>{item.institution}</span>
+                                                    )}
+                                                </div>
                                             </div>
                                             <div className="flex items-center space-x-1">
-                                                <Award size={14} />
+                                                <MapPin size={14} />
                                                 <span>{item.type}</span>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div>
-                                        <div className="flex items-center space-x-2 text-gray-300 text-sm">
-                                            <BookOpen size={14} />
-                                            <span className="font-medium">Key Skills:</span>
+                                    {(item.skills.length > 0) && (
+                                        <div>
+                                            <div className="flex items-center space-x-2 text-gray-300 text-sm">
+                                                <BookOpen size={14} />
+                                                <span className="font-medium">Key Skills:</span>
+                                            </div>
+                                            <div className="flex flex-wrap gap-2 mt-2">
+                                                {item.skills.map((skill, i) => (
+                                                    <motion.span
+                                                        key={i}
+                                                        className="px-2 py-1 bg-gray-700/50 text-gray-300 rounded-full text-xs font-medium hover:bg-emerald-500/20 hover:text-emerald-400 transition-all duration-300"
+                                                        initial={{ opacity: 0, scale: 0.8 }}
+                                                        whileInView={{ opacity: 1, scale: 1 }}
+                                                        viewport={{ once: true }}
+                                                        transition={{ delay: 0.2 + i * 0.1 }}
+                                                        whileHover={{ scale: 1.1 }}
+                                                    >
+                                                        {skill}
+                                                    </motion.span>
+                                                ))}
+                                            </div>
                                         </div>
-                                        <div className="flex flex-wrap gap-2 mt-2">
-                                            {item.skills.map((skill, i) => (
-                                                <motion.span
-                                                    key={i}
-                                                    className="px-3 py-1 bg-gray-700/50 text-gray-300 rounded-full text-xs font-medium hover:bg-emerald-500/20 hover:text-emerald-400 transition-all duration-300"
-                                                    initial={{ opacity: 0, scale: 0.8 }}
-                                                    whileInView={{ opacity: 1, scale: 1 }}
-                                                    viewport={{ once: true }}
-                                                    transition={{ delay: 0.2 + i * 0.1 }}
-                                                    whileHover={{ scale: 1.1 }}
-                                                >
-                                                    {skill}
-                                                </motion.span>
-                                            ))}
-                                        </div>
-                                    </div>
+                                    )}
 
-                                    <div className="flex items-center space-x-2 text-emerald-400 text-sm">
-                                        <Star size={14} />
-                                        <span className="font-medium">Duration: {item.duration}</span>
-                                    </div>
+                                    {(item.info && item.info.length > 0) && (
+                                        <div className="flex items-center space-x-2 text-gray-300 text-md">
+                                            <Star size={14} />
+                                            <span className="font-medium">{item.info}</span>
+                                        </div>
+                                    )}
+
+                                    {(item.duration.length > 0) && (
+                                        <div className="flex items-center space-x-2 text-emerald-400 text-sm">
+                                            <Star size={14} />
+                                            <span className="font-medium">Duration: {item.duration}</span>
+                                        </div>
+                                    )}
+
+                                    {(item.result && item.result.length > 0) && (
+                                        <div className="inline-flex items-center gap-2 rounded-md bg-emerald-500/15 px-3 py-1 border border-emerald-500/30 shadow-sm hover:shadow-emerald-500/20 hover:border-emerald-500/50 transition-all duration-300">
+                                            <div className="flex items-center justify-center w-4 h-4 rounded-full bg-emerald-500 text-gray-900 shadow-sm">
+                                                <Check size={8} strokeWidth={3} />
+                                            </div>
+                                            <span className="text-sm font-medium text-emerald-400">{item.result}</span>
+                                        </div>
+                                    )}
                                 </div>
 
                                 {/* Decorative icon */}
