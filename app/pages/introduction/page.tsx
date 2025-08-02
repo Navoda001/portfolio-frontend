@@ -18,11 +18,14 @@ import {
     Facebook
 } from 'lucide-react';
 import { Typewriter } from 'react-simple-typewriter';
+import MobilePageNavigation from '@/app/components/MobilePageNavigation';
+import { usePathname } from 'next/navigation';
 
 const Introduction = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
     const mainControls = useAnimation();
+    const pathname = usePathname();
 
     useEffect(() => {
         if (isInView) {
@@ -374,6 +377,7 @@ const Introduction = () => {
                     ))}
                 </motion.div>
             </div>
+            <MobilePageNavigation currentPath={pathname} />
         </section>
     );
 };

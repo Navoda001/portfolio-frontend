@@ -4,6 +4,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation, useInView, Variants } from 'framer-motion';
 import Select from 'react-select';
 import { Send, User, Mail, Phone, MessageSquare, Briefcase, MapPin } from 'lucide-react';
+import MobilePageNavigation from '@/app/components/MobilePageNavigation';
+import { usePathname } from 'next/navigation';
 
 // Types
 interface ContactFormData {
@@ -72,6 +74,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const mainControls = useAnimation();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (isInView) {
@@ -179,7 +182,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
   return (
     <motion.section
       ref={ref}
-      className="py-20 px-4 bg-gray-900 mt-10"
+      className="py-20 px-4 bg-gray-900 pt-28"
       variants={containerVariants}
       initial="hidden"
       animate={mainControls}
@@ -416,8 +419,8 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
               type="submit"
               disabled={isSubmitting}
               className={`w-full py-4 px-6 rounded-xl font-semibold text-white transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-emerald-500/50 ${isSubmitting
-                  ? 'bg-gray-600 cursor-not-allowed'
-                  : 'bg-emerald-500 hover:bg-emerald-400 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40'
+                ? 'bg-gray-600 cursor-not-allowed'
+                : 'bg-emerald-500 hover:bg-emerald-400 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40'
                 }`}
               variants={buttonVariants}
               whileHover="hover"
@@ -467,6 +470,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
           </motion.form>
         </div>
       </div>
+      <MobilePageNavigation currentPath={pathname} />
     </motion.section>
   );
 };

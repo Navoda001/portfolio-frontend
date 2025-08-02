@@ -15,12 +15,15 @@ import EducationSection from '@/app/components/Education';
 import type { Variants } from "framer-motion";
 import TechStackSection from '@/app/components/Skill';
 import AboutMe from '@/app/components/AboutMe';
+import MobilePageNavigation from '@/app/components/MobilePageNavigation';
+import { usePathname } from 'next/navigation';
 
 const WhyHireMeSection = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
     const mainControls = useAnimation();
     const [activeTab, setActiveTab] = useState('Education');
+    const pathname = usePathname();
 
     useEffect(() => {
         if (isInView) {
@@ -83,7 +86,7 @@ const WhyHireMeSection = () => {
     };
 
     return (
-        <section ref={ref} className="py-20 mt-10 bg-gray-900  min-h-screen">
+        <section ref={ref} className="py-20 pt-28 bg-gray-900  min-h-screen">
             <div className="absolute inset-0 overflow-hidden">
                 {[...Array(20)].map((_, i) => (
                     <motion.div
@@ -230,6 +233,7 @@ const WhyHireMeSection = () => {
                     </motion.div>
                 </motion.div>
             </div>
+            <MobilePageNavigation currentPath={pathname} />
         </section>
     );
 };

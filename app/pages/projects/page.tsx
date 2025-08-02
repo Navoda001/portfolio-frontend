@@ -15,6 +15,8 @@ import {
   Play,
   Eye
 } from 'lucide-react';
+import MobilePageNavigation from '@/app/components/MobilePageNavigation';
+import { usePathname } from "next/navigation";
 
 const ProjectShowcase = () => {
   const ref = useRef(null);
@@ -22,6 +24,7 @@ const ProjectShowcase = () => {
   const mainControls = useAnimation();
   const [currentProject, setCurrentProject] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (isInView) {
@@ -155,7 +158,7 @@ const ProjectShowcase = () => {
 
 
   return (
-    <section ref={ref} className="py-20 mt-10 bg-gray-900 relative overflow-hidden">
+    <section ref={ref} className="py-20 pt-28 bg-gray-900 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
@@ -486,21 +489,21 @@ const ProjectShowcase = () => {
             );
           })}
         </motion.div>
-  <div className="mt-10 flex justify-center z-50">
-        <motion.a
-          href="https://github.com/Navoda001?tab=repositories"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="View All Certifications on LinkedIn"
-          className="flex max-w-4xl items-center space-x-2 bg-emerald-600/50 text-gray-300 px-6 py-3 rounded-full font-semibold border border-slate-700 transition-all duration-300 hover:border-emerald-500 hover:text-emerald-400"
-          whileHover={{ scale: 1.05, y: -2 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <span>View All Projects</span>
-        </motion.a>
+        <div className="mt-10 flex justify-center z-50">
+          <motion.a
+            href="https://github.com/Navoda001?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View All Certifications on LinkedIn"
+            className="flex max-w-4xl items-center space-x-2 bg-emerald-600/50 text-gray-300 px-6 py-3 rounded-full font-semibold border border-slate-700 transition-all duration-300 hover:border-emerald-500 hover:text-emerald-400"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span>View All Projects</span>
+          </motion.a>
+        </div>
       </div>
-      </div>
-    
+      <MobilePageNavigation currentPath={pathname} />
     </section>
   );
 };

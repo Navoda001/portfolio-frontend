@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Award, Trophy, BookOpen, Calendar, ExternalLink, Filter, ChevronLeft, ChevronRight } from 'lucide-react';
+import MobilePageNavigation from '@/app/components/MobilePageNavigation';
+import { usePathname } from 'next/navigation';
 
 interface Certificate {
     id: string;
@@ -48,8 +50,7 @@ const CertificatesComponent = () => {
     const [filter, setFilter] = useState<'competition' | 'learning'>('competition');
     const [currentPage, setCurrentPage] = useState(0);
     const [maxVisible, setMaxVisible] = useState(3);
-    const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
+    const pathname = usePathname();
 
     const certificates: Certificate[] = [
         {
@@ -166,7 +167,7 @@ const CertificatesComponent = () => {
     };
 
     return (
-        <section className="py-20 mt-10 bg-gray-900 relative overflow-hidden">
+        <section className="py-20 pt-28 bg-gray-900 relative overflow-hidden">
             {/* Background Effects */}
             <div className="absolute inset-0 overflow-hidden">
                 {[...Array(15)].map((_, i) => (
@@ -394,7 +395,7 @@ const CertificatesComponent = () => {
                     </motion.a>
                 </div>
             </div>
-
+            <MobilePageNavigation currentPath={pathname} />
         </section>
     );
 };
