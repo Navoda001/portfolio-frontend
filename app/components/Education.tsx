@@ -13,7 +13,7 @@ import {
     Check
 } from 'lucide-react';
 import type { Variants } from "framer-motion";
-import { img } from 'motion/react-client';
+
 const EducationSection = () => {
     const ref = useRef(null);
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -109,7 +109,7 @@ const EducationSection = () => {
             duration: '4 years',
             skills: [],
             color: 'from-orange-500 to-red-600',
-            info:"I am a third-year undergraduate at the Faculty of Information Technology, University of Moratuwa, with a strong passion for software development and innovative problem-solving. My academic journey has equipped me with solid technical skills and hands-on experience in building practical solutions across various technologies.",
+            info: "I am a third-year undergraduate at the Faculty of Information Technology, University of Moratuwa, with a strong passion for software development and innovative problem-solving. My academic journey has equipped me with solid technical skills and hands-on experience in building practical solutions across various technologies.",
             result: "CGPA:3.25/4.00 (May 2025)",
             img: '/education/education4.jpg',
         }
@@ -123,11 +123,36 @@ const EducationSection = () => {
 
     const handleScroll = () => {
         if (!scrollRef.current) return;
+
         const scrollLeft = scrollRef.current.scrollLeft;
-        const cardWidth = scrollRef.current.clientWidth;
+        const card = scrollRef.current.querySelector<HTMLElement>('.education-card');
+        if (!card) return;
+
+        const gap = 24; // gap-6
+        const cardWidth = card.offsetWidth + gap;
+
         const index = Math.round(scrollLeft / cardWidth);
         setCurrentIndex(index);
     };
+
+
+
+    const scrollToIndex = (i: number) => {
+        if (!scrollRef.current) return;
+
+        const card = scrollRef.current.querySelector<HTMLElement>('.education-card');
+        if (!card) return;
+
+        const gap = 24; // gap-6
+        const cardWidth = card.offsetWidth + gap;
+
+        scrollRef.current.scrollTo({
+            left: i * cardWidth,
+            behavior: 'smooth'
+        });
+    };
+
+
 
     const cardVariants: Variants = {
         hidden: { opacity: 0, y: 50 },
@@ -199,9 +224,10 @@ const EducationSection = () => {
                                 initial="hidden"
                                 whileInView="visible"
                                 viewport={{ once: true }}
-                                className="snap-center min-w-[90%] sm:min-w-[80%] lg:min-w-[70%] xl:min-w-[60%] bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 group relative hover:bg-gray-800/70 transition-all duration-300"
+                                className="education-card snap-center min-w-[90%] sm:min-w-[80%] lg:min-w-[70%] xl:min-w-[60%] bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 group relative hover:bg-gray-800/70 transition-all duration-300"
                                 whileHover={{ scale: 1.02, y: -5 }}
                             >
+
                                 {/* Background gradient hover */}
                                 <div
                                     className={`absolute inset-0 bg-gradient-to-r ${item.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300`}
@@ -325,11 +351,13 @@ const EducationSection = () => {
                         {educationData.map((_, i) => (
                             <motion.div
                                 key={i}
-                                className={`w-3 h-3 rounded-full ${i === currentIndex ? 'bg-emerald-400 scale-110' : 'bg-gray-600'
+                                onClick={() => scrollToIndex(i)}
+                                className={`w-3 h-3 rounded-full cursor-pointer ${i === currentIndex ? 'bg-emerald-400 scale-110' : 'bg-gray-600'
                                     } transition-all duration-300`}
                                 layout
                             />
                         ))}
+
                     </motion.div>
                 </motion.div >
             </div >
