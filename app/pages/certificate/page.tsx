@@ -333,23 +333,29 @@ const CertificatesComponent = () => {
                                         ))}
                                     </div>
                                     <div className="flex items-center justify-between pt-4 border-t border-emerald-700/50">
+                                        {/* Left Side (Credential Info) */}
                                         <div className="flex items-center space-x-4">
                                             {cert.credentialId && (
-                                                <span className="text-xs text-emerald-500/70 font-mono">Credential ID: {cert.credentialId}</span>
+                                                <span className="text-xs text-emerald-500/70 font-mono">
+                                                    Credential ID: {cert.credentialId}
+                                                </span>
                                             )}
                                             {cert.credentialUrl && (
                                                 <a
                                                     href={cert.credentialUrl}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="flex items-center gap-1 px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs rounded-full hover:bg-emerald-500/30 transition-colors duration-300"
+                                                    className="flex items-center gap-1 px-3 py-1 mr-3 bg-emerald-500/20 text-emerald-400 text-xs rounded-full hover:bg-emerald-500/30 transition-colors duration-300"
                                                 >
                                                     <span>View</span>
                                                     <ExternalLink className="w-3 h-3" />
                                                 </a>
                                             )}
-                                            {totalPages > 1 && (
-                                            <div className="flex md:hidden justify-end space-x-4">
+                                        </div>
+
+                                        {/* Right Side (Buttons) */}
+                                        {totalPages > 1 && (
+                                            <div className="flex md:hidden items-center space-x-4">
                                                 <motion.button
                                                     onClick={prev}
                                                     disabled={totalPages <= 1}
@@ -370,9 +376,6 @@ const CertificatesComponent = () => {
                                                 </motion.button>
                                             </div>
                                         )}
-                                        </div>
-
-                                        
                                     </div>
 
                                 </div>
@@ -436,7 +439,7 @@ const CertificatesComponent = () => {
                 </div>
             </div>
             <MobilePageNavigation currentPath={pathname} />
-            <Footer/>
+            <Footer />
         </section>
     );
 };
