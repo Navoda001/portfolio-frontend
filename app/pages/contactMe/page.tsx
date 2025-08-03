@@ -109,15 +109,28 @@ const ContactMe = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
     setIsSubmitting(true);
     setSubmitStatus('idle');
+    formData.append("access_key", "703a4daa-aec0-4a08-a108-ebe973ce0aef");
 
-    try {
-      console.log('Form submitted:', formData);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
 
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: json
+    });
+    const result = await response.json();
+    if (result.success) {
       setSubmitStatus('success');
+      setIsSubmitting(false);
       setFormData({
         firstName: '',
         lastName: '',
@@ -126,14 +139,11 @@ const ContactMe = () => {
         service: '',
         message: '',
       });
-    } catch (error) {
+    } else {
       setSubmitStatus('error');
-      console.error('Form submission error:', error);
-    } finally {
       setIsSubmitting(false);
     }
-  };
-
+  }
   type OptionType = { value: string; label: string };
 
   // Map your services to react-select options
