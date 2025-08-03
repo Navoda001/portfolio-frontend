@@ -150,11 +150,18 @@ const CertificatesComponent = () => {
     const goToPage = (pageIndex: number) => {
         setCurrentPage(pageIndex);
     };
+    type FilterType = 'competition' | 'learning';
 
-    const handleFilterChange = (newFilter: 'competition' | 'learning') => {
+    const handleFilterChange = (newFilter: FilterType) => {
         setFilter(newFilter);
         setCurrentPage(0);
     };
+
+    const filterButtons: { key: FilterType; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
+        { key: 'competition', label: 'Competitions', icon: Trophy },
+        { key: 'learning', label: 'Learning', icon: BookOpen },
+    ];
+
 
     const getTypeIcon = (type: string) => {
         return type === 'competition' ? <Trophy className="w-5 h-5" /> : <BookOpen className="w-5 h-5" />;
@@ -240,18 +247,15 @@ const CertificatesComponent = () => {
                         <Filter className="w-5 h-5" />
                         <span className="font-medium">Filter by:</span>
                     </div>
-                    {[
-                        { key: 'competition', label: 'Competitions', icon: Trophy },
-                        { key: 'learning', label: 'Learning', icon: BookOpen },
-                    ].map(({ key, label, icon: Icon }) => (
+                    {filterButtons.map(({ key, label, icon: Icon }) => (
                         <motion.button
                             key={key}
-                            onClick={() => handleFilterChange(key as any)}
+                            onClick={() => handleFilterChange(key)}  
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className={`flex items-center gap-2 px-6 py-3 rounded-full border-2 transition-all duration-300 ${filter === key
-                                ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400'
-                                : 'bg-slate-800/50 border-slate-700 text-gray-400 hover:border-emerald-500/50 hover:text-emerald-400'
+                                    ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400'
+                                    : 'bg-slate-800/50 border-slate-700 text-gray-400 hover:border-emerald-500/50 hover:text-emerald-400'
                                 }`}
                         >
                             <Icon className="w-4 h-4" />

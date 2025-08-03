@@ -86,9 +86,16 @@ const Introduction = () => {
         "Tech Explorer",
     ];
 
-    // ✅ Create refs for each stat outside the map
-    const statRefs = useRef(stats.map(() => createRef<HTMLDivElement>()));
-    const statInViews = statRefs.current.map((r) => useInView(r, { once: true }));
+    // ✅ Custom hook to handle multiple refs + inView tracking
+    function useInViewArray<T extends HTMLElement>(count: number) {
+        const refs = Array.from({ length: count }, () => useRef<T>(null));
+        const inViews = refs.map((ref) => useInView(ref, { once: true }));
+        return { refs, inViews };
+    }
+
+    // Inside your component:
+    const { refs: statRefs, inViews: statInViews } = useInViewArray<HTMLDivElement>(stats.length);
+
 
     return (
         <section ref={ref} className="min-h-screen bg-gray-900 relative overflow-hidden">
@@ -294,9 +301,10 @@ const Introduction = () => {
                                 variants={itemVariants}
                                 className="text-center group"
                                 whileHover={{ y: -5 }}
-                                ref={statRefs.current[index]}
+                                ref={statRefs[index]}
                             >
                                 <div className="flex flex-col items-center space-y-2">
+                                    {/* Icon */}
                                     <motion.div
                                         className="w-12 h-12 rounded-full bg-emerald-400/10 flex items-center justify-center mb-2 group-hover:bg-emerald-400/20 transition-colors duration-300"
                                         whileHover={{ rotate: 360 }}
@@ -305,6 +313,7 @@ const Introduction = () => {
                                         <stat.icon className="text-emerald-400" size={24} />
                                     </motion.div>
 
+                                    {/* Number + CountUp */}
                                     <motion.h3
                                         className="text-4xl lg:text-5xl font-bold text-white"
                                         initial={{ opacity: 0, y: 10 }}
@@ -321,6 +330,7 @@ const Introduction = () => {
                                         )}
                                     </motion.h3>
 
+                                    {/* Label */}
                                     <motion.p
                                         className="text-gray-400 text-sm whitespace-pre-line"
                                         initial={{ opacity: 0, y: 5 }}

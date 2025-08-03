@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation, useInView, Variants } from 'framer-motion';
 import Select from 'react-select';
+import { StylesConfig, GroupBase } from 'react-select';
 import { Send, User, Mail, Phone, MessageSquare, Briefcase, MapPin } from 'lucide-react';
 import MobilePageNavigation from '@/app/components/MobilePageNavigation';
 import { usePathname } from 'next/navigation';
@@ -13,7 +14,7 @@ const socialLinks = [
   { icon: FaLinkedinIn, href: "https://www.linkedin.com/in/navoda001", color: "bg-[#0077B5]" },
   { icon: FaFacebook, href: "https://www.facebook.com/share/1BsnzU3eni/?mibextid=wwXIfr", color: "bg-[#1877F2]" },
   { icon: FaWhatsapp, href: "https://api.whatsapp.com/send/?phone=94762085246&text&type=phone_number&app_absent=0", color: "bg-[#25D366]" },
-  { icon: FaInstagram, href: "https://www.instagram.com/navoda_c001?igsh=MXVkeGpzYXJ3NHF3bg%3D%3D&utm_source=qr", color: "bg-[#E4405F]" }, 
+  { icon: FaInstagram, href: "https://www.instagram.com/navoda_c001?igsh=MXVkeGpzYXJ3NHF3bg%3D%3D&utm_source=qr", color: "bg-[#E4405F]" },
 ];
 
 // Types
@@ -137,55 +138,60 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
     }
   };
 
+  type OptionType = { value: string; label: string };
+
   // Map your services to react-select options
-  const serviceOptions = services.map((service) => ({ value: service, label: service }));
+  const serviceOptions: OptionType[] = services.map((service) => ({
+    value: service,
+    label: service,
+  }));
 
   // Custom react-select styles to match your dark theme + emerald accents
-  const customSelectStyles = {
-    control: (provided: any, state: any) => ({
+  const customSelectStyles: StylesConfig<OptionType, false, GroupBase<OptionType>> = {
+    control: (provided, state) => ({
       ...provided,
-      backgroundColor: 'rgba(31, 41, 55, 0.5)', // Tailwind gray-800/50
-      borderColor: state.isFocused ? '#10B981' : '#374151', // emerald-500 or gray-700
+      backgroundColor: 'rgba(31, 41, 55, 0.5)',
+      borderColor: state.isFocused ? '#10B981' : '#374151',
       boxShadow: state.isFocused ? '0 0 0 2px rgba(16, 185, 129, 0.4)' : 'none',
-      borderRadius: '0.75rem', // rounded-xl
+      borderRadius: '0.75rem',
       paddingLeft: '0.5rem',
       paddingRight: '0.5rem',
       color: 'white',
       transition: 'all 0.3s ease',
       cursor: 'pointer',
-      minHeight: '44px', // align with input height
+      minHeight: '44px',
     }),
-    option: (provided: any, state: any) => ({
+    option: (provided, state) => ({
       ...provided,
-      backgroundColor: state.isFocused ? '#10B981' : 'transparent', // emerald-400 on hover
-      color: state.isFocused ? 'white' : 'white',
+      backgroundColor: state.isFocused ? '#10B981' : 'transparent',
+      color: 'white',
       cursor: 'pointer',
       padding: '12px 15px',
     }),
-    singleValue: (provided: any) => ({
+    singleValue: (provided) => ({
       ...provided,
       color: 'white',
     }),
-    menu: (provided: any) => ({
+    menu: (provided) => ({
       ...provided,
-      backgroundColor: '#1F2937', // Tailwind gray-800
+      backgroundColor: '#1F2937',
       borderRadius: '0.75rem',
       marginTop: '0.25rem',
       zIndex: 9999,
     }),
-    dropdownIndicator: (provided: any, state: any) => ({
+    dropdownIndicator: (provided, state) => ({
       ...provided,
-      color: state.isFocused ? '#10B981' : '#6B7280', // emerald-400 or gray-400
+      color: state.isFocused ? '#10B981' : '#6B7280',
       padding: '8px',
       transition: 'color 0.2s',
     }),
-    indicatorSeparator: (provided: any) => ({
+    indicatorSeparator: (provided) => ({
       ...provided,
       backgroundColor: 'transparent',
     }),
-    placeholder: (provided: any) => ({
+    placeholder: (provided) => ({
       ...provided,
-      color: '#9CA3AF', // gray-400
+      color: '#9CA3AF',
     }),
   };
 
@@ -295,7 +301,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
                   <p className="text-gray-300 text-sm">Address</p>
                   <p className="text-white font-medium">{contactInfo.address}</p>
                 </div>
-              </div> 
+              </div>
             </div>
             <div className="flex flex-col items-center gap-6 mt-20">
               {/* Heading */}
