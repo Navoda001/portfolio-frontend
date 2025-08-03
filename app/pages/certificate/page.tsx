@@ -225,9 +225,9 @@ const CertificatesComponent = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-12"
                 >
-                    <div className="flex items-center justify-center gap-3 mb-4">
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-3 mb-4">
                         <Award className="w-8 h-8 text-emerald-400" />
-                        <h1 className="text-4xl md:text-5xl font-bold text-white">
+                        <h1 className="text-3xl md:text-5xl font-bold text-white text-center md:text-left">
                             Certificates & <span className="text-emerald-400">Achievements</span>
                         </h1>
                     </div>
@@ -235,6 +235,7 @@ const CertificatesComponent = () => {
                         Continuous learning through courses, certifications, and active participation in tech events
                     </p>
                 </motion.div>
+
 
                 {/* Filter */}
 
@@ -331,21 +332,47 @@ const CertificatesComponent = () => {
                                         ))}
                                     </div>
                                     <div className="flex items-center justify-between pt-4 border-t border-emerald-700/50">
-                                        {cert.credentialId && (
-                                            <span className="text-xs text-emerald-500/70 font-mono">Credential ID: {cert.credentialId}</span>
-                                        )}
-                                        {cert.credentialUrl && (
-                                            <a
-                                                href={cert.credentialUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex items-center gap-1 px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs rounded-full hover:bg-emerald-500/30 transition-colors duration-300"
-                                            >
-                                                <span>View</span>
-                                                <ExternalLink className="w-3 h-3" />
-                                            </a>
+                                        <div className="flex items-center space-x-4">
+                                            {cert.credentialId && (
+                                                <span className="text-xs text-emerald-500/70 font-mono">Credential ID: {cert.credentialId}</span>
+                                            )}
+                                            {cert.credentialUrl && (
+                                                <a
+                                                    href={cert.credentialUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="flex items-center gap-1 px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs rounded-full hover:bg-emerald-500/30 transition-colors duration-300"
+                                                >
+                                                    <span>View</span>
+                                                    <ExternalLink className="w-3 h-3" />
+                                                </a>
+                                            )}
+                                        </div>
+
+                                        {totalPages > 1 && (
+                                            <div className="flex justify-end space-x-2">
+                                                <motion.button
+                                                    onClick={prev}
+                                                    disabled={totalPages <= 1}
+                                                    className="w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-110 active:scale-95"
+                                                    whileHover={{ scale: 1.1 }}
+                                                    whileTap={{ scale: 0.9 }}
+                                                >
+                                                    <ChevronLeft size={20} />
+                                                </motion.button>
+                                                <motion.button
+                                                    onClick={next}
+                                                    disabled={totalPages <= 1}
+                                                    className="w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-110 active:scale-95"
+                                                    whileHover={{ scale: 1.1 }}
+                                                    whileTap={{ scale: 0.9 }}
+                                                >
+                                                    <ChevronRight size={20} />
+                                                </motion.button>
+                                            </div>
                                         )}
                                     </div>
+
                                 </div>
                             </motion.div>
                         ))}
@@ -354,7 +381,7 @@ const CertificatesComponent = () => {
 
                 {/* Navigation Arrows */}
                 {totalPages > 1 && (
-                    <div className="flex justify-end space-x-2 mt-6">
+                    <div className="hidden md:flex justify-end space-x-2 mt-6">
                         <motion.button
                             onClick={prev}
                             disabled={totalPages <= 1}
