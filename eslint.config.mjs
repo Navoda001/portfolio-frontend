@@ -18,6 +18,7 @@ export default [
       "@typescript-eslint/quotes": "off",
       quotes: [0], 
       "no-useless-escape": 0,
+      "@typescript-eslint/no-unused-vars": "off",
     },
   },
 ];

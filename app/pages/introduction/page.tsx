@@ -2,14 +2,12 @@
 
 import { motion, useAnimation, useInView } from 'framer-motion';
 import type { Variants } from "framer-motion";
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, createRef } from 'react';
 import Image from 'next/image';
 import {
     Github,
     Linkedin,
-    Youtube,
     Mail,
-    Twitter,
     Download,
     Code,
     Briefcase,
@@ -64,6 +62,7 @@ const Introduction = () => {
             },
         },
     };
+
     const socialLinks = [
         { icon: Github, href: "https://github.com/Navoda001", label: "GitHub" },
         { icon: Linkedin, href: "https://www.linkedin.com/in/navoda001", label: "LinkedIn" },
@@ -87,10 +86,13 @@ const Introduction = () => {
         "Tech Explorer",
     ];
 
+    // ✅ Create refs for each stat outside the map
+    const statRefs = useRef(stats.map(() => createRef<HTMLDivElement>()));
+    const statInViews = statRefs.current.map((r) => useInView(r, { once: true }));
 
     return (
         <section ref={ref} className="min-h-screen bg-gray-900 relative overflow-hidden">
-            {/* Animated Background Elements */}
+            {/* Animated Background */}
             <div className="absolute inset-0 overflow-hidden">
                 {[...Array(20)].map((_, i) => (
                     <motion.div
@@ -102,10 +104,7 @@ const Introduction = () => {
                             height: `${Math.random() * 100 + 50}px`,
                             transform: `rotate(${Math.random() * 360}deg)`,
                         }}
-                        animate={{
-                            opacity: [0.2, 0.8, 0.2],
-                            scale: [1, 1.2, 1],
-                        }}
+                        animate={{ opacity: [0.2, 0.8, 0.2], scale: [1, 1.2, 1] }}
                         transition={{
                             duration: Math.random() * 3 + 2,
                             repeat: Infinity,
@@ -116,7 +115,6 @@ const Introduction = () => {
             </div>
 
             <div className="relative z-10 w-full px-4 sm:px-6 lg:px-44 pt-20 lg:pt-24">
-
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -141,7 +139,6 @@ const Introduction = () => {
                                     deleteSpeed={50}
                                     delaySpeed={1500}
                                 />
-
                             </motion.p>
 
                             <div className="space-y-2">
@@ -160,48 +157,38 @@ const Introduction = () => {
                             </div>
                         </motion.div>
 
-                        <motion.div variants={itemVariants} className="space-y-4">
-                            <motion.p className="text-gray-300 text-lg leading-relaxed max-w-xl">
-                                A third-year undergraduate at the Faculty of Information Technology, University of Moratuwa, with hands-on experience in full-stack development and embedded systems. Skilled in Java, JavaScript, and C, with a strong interest in building real-time web applications and hardware-integrated solutions. Passionate about solving practical problems through technology and eager to contribute in dynamic, team-oriented environments.</motion.p>
-                        </motion.div>
+                        <motion.p
+                            variants={itemVariants}
+                            className="text-gray-300 text-lg leading-relaxed max-w-xl"
+                        >
+                            A third-year undergraduate at the Faculty of Information Technology, University of Moratuwa, with hands-on experience in full-stack development and embedded systems. Skilled in Java, JavaScript, and C, with a strong interest in building real-time web applications and hardware-integrated solutions. Passionate about solving practical problems through technology and eager to contribute in dynamic, team-oriented environments.
+                        </motion.p>
 
-                        {/* CTA and Social Links */}
+                        {/* CTA + Social Links */}
                         <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-6">
                             <motion.button
                                 className="group relative px-8 py-4 bg-transparent border-2 border-emerald-400 text-emerald-400 font-semibold rounded-full overflow-hidden transition-all duration-300"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
+                                onClick={() => {
+                                    const link = document.createElement("a");
+                                    link.href = "/Navoda_Chathurya_CV.pdf";
+                                    link.download = "Navoda_Chathurya_CV.pdf";
+                                    document.body.appendChild(link);
+                                    link.click();
+                                    document.body.removeChild(link);
+                                }}
                             >
-                                <span
-                                    onClick={() => {
-                                        const link = document.createElement("a");
-                                        link.href = "/Navoda_Chathurya_CV.pdf";
-                                        link.download = "Navoda_Chathurya_CV.pdf";
-                                        document.body.appendChild(link);
-                                        link.click();
-                                        document.body.removeChild(link);
-                                    }}
-                                    className="relative z-10 flex items-center gap-2"
-                                >
+                                <span className="relative z-10 flex items-center gap-2">
                                     <Download size={20} />
                                     DOWNLOAD CV
                                 </span>
-
                                 <motion.div
                                     className="absolute inset-0 bg-emerald-400"
                                     initial={{ x: "-100%" }}
                                     whileHover={{ x: 0 }}
                                     transition={{ type: "tween", duration: 0.3 }}
                                 />
-                                <motion.span
-                                    className="absolute inset-0 flex items-center justify-center text-gray-900 font-semibold"
-                                    initial={{ opacity: 0 }}
-                                    whileHover={{ opacity: 1 }}
-                                    transition={{ delay: 0.1 }}
-                                >
-                                    <Download size={20} className="mr-2" />
-                                    DOWNLOAD CV
-                                </motion.span>
                             </motion.button>
 
                             <div className="flex gap-4">
@@ -224,13 +211,9 @@ const Introduction = () => {
                         </motion.div>
                     </div>
 
-                    {/* Right Content - Profile Image */}
-                    <motion.div
-                        variants={itemVariants}
-                        className="relative flex justify-center lg:justify-end mt-3"
-                    >
+                    {/* Right Content */}
+                    <motion.div variants={itemVariants} className="relative flex justify-center lg:justify-end mt-3">
                         <div className="relative flex items-center justify-center">
-                            {/* Animated Circle */}
                             <svg
                                 className="absolute w-[320px] h-[320px] lg:w-[420px] lg:h-[420px]"
                                 viewBox="0 0 420 420"
@@ -240,7 +223,7 @@ const Introduction = () => {
                                     cx="210"
                                     cy="210"
                                     r="206"
-                                    stroke="#34d399" // emerald-400 hex
+                                    stroke="#34d399"
                                     strokeWidth="4"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
@@ -257,7 +240,6 @@ const Introduction = () => {
                                 />
                             </svg>
 
-                            {/* Profile Image */}
                             <motion.div
                                 className="relative w-72 h-72 lg:w-96 lg:h-96 rounded-full overflow-hidden"
                                 initial={{ scale: 0.8, opacity: 0 }}
@@ -267,14 +249,13 @@ const Introduction = () => {
                             >
                                 <Image
                                     src="/Profile.jpg"
-                                    alt="Luke Coleman"
+                                    alt="Navoda Chathurya"
                                     fill
                                     className="object-cover"
                                     priority
                                 />
                             </motion.div>
 
-                            {/* Sparkle Effects */}
                             {[...Array(8)].map((_, i) => (
                                 <motion.div
                                     key={`sparkle-${i}`}
@@ -283,10 +264,7 @@ const Introduction = () => {
                                         left: `${Math.random() * 100}%`,
                                         top: `${Math.random() * 100}%`,
                                     }}
-                                    animate={{
-                                        scale: [0, 1, 0],
-                                        opacity: [0, 1, 0],
-                                    }}
+                                    animate={{ scale: [0, 1, 0], opacity: [0, 1, 0] }}
                                     transition={{
                                         duration: 2,
                                         repeat: Infinity,
@@ -296,7 +274,6 @@ const Introduction = () => {
                                 />
                             ))}
                         </div>
-
                     </motion.div>
                 </motion.div>
 
@@ -308,61 +285,54 @@ const Introduction = () => {
                     className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-16 border-t border-gray-800 mt-16"
                 >
                     {stats.map((stat, index) => {
-  const delay = 0.5 + index * 0.2;
+                        const delay = 0.5 + index * 0.2;
+                        const isVisible = statInViews[index];
 
-  // Track if THIS stat is visible
-  const statRef = useRef(null);
-  const statInView = useInView(statRef, { once: true });
+                        return (
+                            <motion.div
+                                key={stat.label}
+                                variants={itemVariants}
+                                className="text-center group"
+                                whileHover={{ y: -5 }}
+                                ref={statRefs.current[index]}
+                            >
+                                <div className="flex flex-col items-center space-y-2">
+                                    <motion.div
+                                        className="w-12 h-12 rounded-full bg-emerald-400/10 flex items-center justify-center mb-2 group-hover:bg-emerald-400/20 transition-colors duration-300"
+                                        whileHover={{ rotate: 360 }}
+                                        transition={{ duration: 0.5 }}
+                                    >
+                                        <stat.icon className="text-emerald-400" size={24} />
+                                    </motion.div>
 
-  return (
-    <motion.div
-      key={stat.label}
-      variants={itemVariants}
-      className="text-center group"
-      whileHover={{ y: -5 }}
-      ref={statRef}
-    >
-      <div className="flex flex-col items-center space-y-2">
-        {/* Icon */}
-        <motion.div
-          className="w-12 h-12 rounded-full bg-emerald-400/10 flex items-center justify-center mb-2 group-hover:bg-emerald-400/20 transition-colors duration-300"
-          whileHover={{ rotate: 360 }}
-          transition={{ duration: 0.5 }}
-        >
-          <stat.icon className="text-emerald-400" size={24} />
-        </motion.div>
+                                    <motion.h3
+                                        className="text-4xl lg:text-5xl font-bold text-white"
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay, duration: 0.6, ease: "easeOut" }}
+                                    >
+                                        {isClient && isVisible && (
+                                            <CountUp
+                                                start={0}
+                                                end={parseInt(stat.number.replace(/[^0-9]/g, ""))}
+                                                duration={2}
+                                                suffix={stat.number.includes("+") ? "+" : ""}
+                                            />
+                                        )}
+                                    </motion.h3>
 
-        {/* Number + CountUp */}
-        <motion.h3
-          className="text-4xl lg:text-5xl font-bold text-white"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay, duration: 0.6, ease: "easeOut" }}
-        >
-          {isClient && statInView && (
-            <CountUp
-              start={0}
-              end={parseInt(stat.number.replace(/[^0-9]/g, ""))}
-              duration={2}
-              suffix={stat.number.includes("+") ? "+" : ""}
-            />
-          )}
-        </motion.h3>
-
-        {/* Label */}
-        <motion.p
-          className="text-gray-400 text-sm whitespace-pre-line"
-          initial={{ opacity: 0, y: 5 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: delay + 0.3, duration: 0.5 }}
-        >
-          {stat.label}
-        </motion.p>
-      </div>
-    </motion.div>
-  );
-})}
-
+                                    <motion.p
+                                        className="text-gray-400 text-sm whitespace-pre-line"
+                                        initial={{ opacity: 0, y: 5 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: delay + 0.3, duration: 0.5 }}
+                                    >
+                                        {stat.label}
+                                    </motion.p>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
                 </motion.div>
             </div>
             <MobilePageNavigation currentPath={pathname} />
