@@ -87,15 +87,12 @@ const Introduction = () => {
     ];
 
     // ✅ Custom hook to handle multiple refs + inView tracking
-    function useInViewArray<T extends HTMLElement>(count: number) {
-        const refs = Array.from({ length: count }, () => useRef<T>(null));
-        const inViews = refs.map((ref) => useInView(ref, { once: true }));
-        return { refs, inViews };
-    }
+     const statRefs = Array(stats.length)
+        .fill(null)
+        .map(() => useRef<HTMLDivElement>(null));
 
-    // Inside your component:
-    const { refs: statRefs, inViews: statInViews } = useInViewArray<HTMLDivElement>(stats.length);
-
+    // Call useInView individually for each ref — at top level
+    const statInViews = statRefs.map((ref) => useInView(ref, { once: true }));
 
     return (
         <section ref={ref} className="min-h-screen bg-gray-900 relative overflow-hidden">
