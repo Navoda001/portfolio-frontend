@@ -9,16 +9,14 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-export default [
-  // Extend Next.js and TypeScript recommended configs
+export default [ 
   ...compat.extends("next/core-web-vitals", "next/typescript"),
-
-  // Your custom rules
+ 
   {
     rules: {
       "react/no-unescaped-entities": "off",
       "@typescript-eslint/quotes": "off",
-      quotes: [0], // 0 = off
+      quotes: [0], 
       "no-useless-escape": 0,
     },
   },
