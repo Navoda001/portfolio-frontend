@@ -87,6 +87,20 @@ const ProjectShowcase = () => {
     },
     {
       id: "04",
+      title: "Personal Portfolio",
+      category: "Web Development",
+      description: "A modern, responsive personal portfolio website designed to showcase my skills, projects, and professional journey. The site features a clean and interactive UI with smooth animations, a projects gallery, an about section, and a contact form for easy communication. It is optimized for both desktop and mobile devices, ensuring a seamless browsing experience for visitors.",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Motion"],
+      image: "/project/project6.png",
+      liveUrl: "https://www.navoda.dev/",
+      githubUrl: "https://github.com/Navoda001/portfolio-frontend.git",
+      type: "Frontend",
+      type2: "Individual Project",
+      year: "2025",
+      featured: true
+    },
+    {
+      id: "05",
       title: "Course Management System",
       category: "Desktop App",
       description: "Course Management System is a desktop-based application designed to streamline course enrollment, student management, and reporting for educational institutions. It enables students, faculty, and administrators to securely log in, manage courses, register for classes, and generate enrollment reports. The system supports role-based access control (RBAC) to ensure that each user type—student, faculty, or admin—can perform only their authorized tasks. Core features include creating and updating course and student records, enrolling or dropping courses, viewing real-time course availability, and generating statistical reports for administrators.",
@@ -100,7 +114,7 @@ const ProjectShowcase = () => {
       featured: true
     },
     {
-      id: "05",
+      id: "06",
       title: "Place Order Application",
       category: "Desktop App",
       description: "Place Order Application is a Java-based desktop solution designed to simplify customer order processing and inventory management for businesses. The system allows users to search for customers and items, create orders, and automatically update inventory levels. It features an intuitive interface where users can enter order details, review items in an order summary table, and finalize orders seamlessly.",
@@ -554,7 +568,7 @@ const ProjectShowcase = () => {
         </div>
       </div>
       <MobilePageNavigation currentPath={pathname} />
-      <Footer/>
+      <Footer />
     </section>
   );
 };
