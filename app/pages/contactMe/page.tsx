@@ -52,7 +52,7 @@ const statusVariants: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
+const ContactMe: React.FC<ContactSectionProps> = ({ onSubmit }) => {
   const [formData, setFormData] = useState<ContactFormData>({
     firstName: '',
     lastName: '',
@@ -518,4 +518,4 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
   );
 };
 
-export default ContactSection;
+export default ContactMe;
