@@ -86,7 +86,7 @@ const WhyHireMeSection = () => {
     };
 
     return (
-        <section ref={ref} className="py-20 bg-gray-900  min-h-screen">
+        <section ref={ref} className="py-20 min-h-screen bg-gray-900 relative overflow-hidden">
             <div className="absolute inset-0 overflow-hidden">
                 {[...Array(20)].map((_, i) => (
                     <motion.div
