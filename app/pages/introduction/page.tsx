@@ -19,6 +19,7 @@ import { Typewriter } from 'react-simple-typewriter';
 import MobilePageNavigation from '@/app/components/MobilePageNavigation';
 import { usePathname } from 'next/navigation';
 import dynamic from "next/dynamic";
+import Footer from '@/app/components/Footer';
 
 const CountUp = dynamic(() => import("react-countup"), { ssr: false });
 
@@ -349,6 +350,7 @@ const Introduction = () => {
                 </motion.div>
             </div>
             <MobilePageNavigation currentPath={pathname} />
+            <Footer/>
         </section>
     );
 };

@@ -9,6 +9,7 @@ import MobilePageNavigation from '@/app/components/MobilePageNavigation';
 import { usePathname } from 'next/navigation';
 
 import { FaLinkedinIn, FaGithub, FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
+import Footer from '@/app/components/Footer';
 
 const socialLinks = [
   { icon: FaLinkedinIn, href: "https://www.linkedin.com/in/navoda001", color: "bg-[#0077B5]" },
@@ -204,7 +205,7 @@ const ContactMe = () => {
   return (
     <motion.section
       ref={ref}
-      className="py-20 min-h-screen bg-gray-900 relative overflow-hidden"
+      className="pt-20 min-h-screen bg-gray-900 relative overflow-hidden"
       variants={containerVariants}
       initial="hidden"
       animate={mainControls}
@@ -520,6 +521,7 @@ const ContactMe = () => {
         </div>
       </div>
       <MobilePageNavigation currentPath={pathname} />
+      <Footer/>
     </motion.section>
   );
 };

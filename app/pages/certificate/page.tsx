@@ -5,6 +5,7 @@ import { Award, Trophy, BookOpen, Calendar, ExternalLink, Filter, ChevronLeft, C
 import MobilePageNavigation from '@/app/components/MobilePageNavigation';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+import Footer from '@/app/components/Footer';
 
 interface Certificate {
     id: string;
@@ -175,7 +176,7 @@ const CertificatesComponent = () => {
     };
 
     return (
-        <section className="py-20 min-h-screen bg-gray-900 relative overflow-hidden">
+        <section className="pt-20 min-h-screen bg-gray-900 relative overflow-hidden">
             {/* Background Effects */}
             <div className="absolute inset-0 overflow-hidden">
                 {[...Array(15)].map((_, i) => (
@@ -434,6 +435,7 @@ const CertificatesComponent = () => {
                 </div>
             </div>
             <MobilePageNavigation currentPath={pathname} />
+            <Footer/>
         </section>
     );
 };

@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import MobilePageNavigation from '@/app/components/MobilePageNavigation';
 import { usePathname } from "next/navigation";
+import Footer from '@/app/components/Footer';
 
 const ProjectShowcase = () => {
   const ref = useRef(null);
@@ -160,7 +161,7 @@ const ProjectShowcase = () => {
 
 
   return (
-    <section ref={ref} className="py-20 min-h-screen bg-gray-900 relative overflow-hidden">
+    <section ref={ref} className="pt-20 min-h-screen bg-gray-900 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
@@ -553,6 +554,7 @@ const ProjectShowcase = () => {
         </div>
       </div>
       <MobilePageNavigation currentPath={pathname} />
+      <Footer/>
     </section>
   );
 };

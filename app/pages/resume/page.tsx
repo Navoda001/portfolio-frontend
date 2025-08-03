@@ -17,6 +17,7 @@ import TechStackSection from '@/app/components/Skill';
 import AboutMe from '@/app/components/AboutMe';
 import MobilePageNavigation from '@/app/components/MobilePageNavigation';
 import { usePathname } from 'next/navigation';
+import Footer from '@/app/components/Footer';
 
 const WhyHireMeSection = () => {
     const ref = useRef(null);
@@ -86,7 +87,7 @@ const WhyHireMeSection = () => {
     };
 
     return (
-        <section ref={ref} className="py-20 min-h-screen bg-gray-900 relative overflow-hidden">
+        <section ref={ref} className="pt-20 min-h-screen bg-gray-900 relative overflow-hidden">
             <div className="absolute inset-0 overflow-hidden">
                 {[...Array(20)].map((_, i) => (
                     <motion.div
@@ -234,6 +235,7 @@ const WhyHireMeSection = () => {
                 </motion.div>
             </div>
             <MobilePageNavigation currentPath={pathname} />
+            <Footer/>
         </section>
     );
 };
