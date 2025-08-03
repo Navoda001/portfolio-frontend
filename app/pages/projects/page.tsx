@@ -13,7 +13,8 @@ import {
   Smartphone,
   Layers,
   Play,
-  Eye
+  Eye,
+  Presentation
 } from 'lucide-react';
 import MobilePageNavigation from '@/app/components/MobilePageNavigation';
 import { usePathname } from "next/navigation";
@@ -206,7 +207,7 @@ const ProjectShowcase = () => {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <p className="w-8 h-8 text-emerald-400" />
+            <Presentation className="w-8 h-8 text-emerald-400" />
             <h1 className="text-4xl md:text-5xl font-bold text-white">
               Featured <span className="text-emerald-400">Projects</span>
             </h1>
@@ -246,7 +247,7 @@ const ProjectShowcase = () => {
                 className="space-y-6"
               >
                 {/* Category Badge */}
-                <div className='flex justify-between items-center'>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                   <motion.div
                     className="inline-flex items-center space-x-2 bg-emerald-500/10 text-emerald-400 px-4 py-2 rounded-full text-sm font-semibold"
                     whileHover={{ scale: 1.05 }}
@@ -254,15 +255,15 @@ const ProjectShowcase = () => {
                     <Code size={16} />
                     <span>{currentProjectData.category}</span>
                   </motion.div>
+
                   <motion.div
                     className="inline-flex md:hidden items-center space-x-2 bg-emerald-500/10 text-emerald-400 px-4 py-2 rounded-full text-sm font-semibold"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <span>
-                      {currentProjectData.type2}
-                    </span>
+                    <span>{currentProjectData.type2}</span>
                   </motion.div>
                 </div>
+
 
                 {/* Title */}
                 <motion.h3
