@@ -48,7 +48,7 @@ const statusVariants: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-const ContactMe = ( ) => {
+const ContactMe = () => {
   const [formData, setFormData] = useState<ContactFormData>({
     firstName: '',
     lastName: '',
@@ -60,6 +60,11 @@ const ContactMe = ( ) => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [menuPortalTarget, setMenuPortalTarget] = React.useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    setMenuPortalTarget(document.body);
+  }, []);
 
   const services = [
     'Web Development',
@@ -110,8 +115,8 @@ const ContactMe = ( ) => {
     setSubmitStatus('idle');
 
     try {
-        console.log('Form submitted:', formData);
-      
+      console.log('Form submitted:', formData);
+
       setSubmitStatus('success');
       setFormData({
         firstName: '',
@@ -416,7 +421,7 @@ const ContactMe = ( ) => {
                     styles={customSelectStyles}
                     placeholder="Choose a service..."
                     isSearchable={false}
-                    menuPortalTarget={document.body}
+                    menuPortalTarget={menuPortalTarget}
                     menuPosition={'fixed'}
                   />
                 </div>
