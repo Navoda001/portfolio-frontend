@@ -181,7 +181,7 @@ const CertificatesComponent = () => {
                 {[...Array(15)].map((_, i) => (
                     <motion.div
                         key={i}
-                        className="absolute w-1 bg-emerald-400/20"
+                        className="absolute w-1 bg-emerald-400/50"
                         style={{
                             left: `${Math.random() * 100}%`,
                             top: `${Math.random() * 100}%`,
@@ -204,7 +204,7 @@ const CertificatesComponent = () => {
             {/* Blur circle */}
             <div className="absolute inset-0">
                 <motion.div
-                    className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"
+                    className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/40 rounded-full blur-3xl"
                     animate={{
                         scale: [1, 1.3, 1],
                         opacity: [0.3, 0.6, 0.3],
@@ -285,7 +285,7 @@ const CertificatesComponent = () => {
                                 animate="visible"
                                 exit="exit"
                                 layout
-                                className={`group relative bg-gradient-to-br ${getTypeColor(cert.type)} bg-slate-800/80 backdrop-blur-sm border rounded-xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500`}
+                                className={`group relative bg-gradient-to-br ${getTypeColor(cert.type)} bg-slate-800/10 backdrop-blur-sm border rounded-xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500`}
                             >
                                 {/* Image */}
                                 {cert.image && (

@@ -165,7 +165,7 @@ const ProjectShowcase = () => {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 bg-emerald-400/20"
+            className="absolute w-1 bg-emerald-400/50"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
