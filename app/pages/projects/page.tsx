@@ -14,7 +14,8 @@ import {
   Layers,
   Play,
   Eye,
-  Presentation
+  Presentation,
+  ExternalLinkIcon
 } from 'lucide-react';
 import MobilePageNavigation from '@/app/components/MobilePageNavigation';
 import { usePathname } from "next/navigation";
@@ -546,6 +547,7 @@ const ProjectShowcase = () => {
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
           >
+            <ExternalLinkIcon size={18} />
             <span>View All Projects</span>
           </motion.a>
         </div>

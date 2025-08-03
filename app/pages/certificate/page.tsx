@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { Award, Trophy, BookOpen, Calendar, ExternalLink, Filter, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Award, Trophy, BookOpen, Calendar, ExternalLink, Filter, ChevronLeft, ChevronRight, ExternalLinkIcon } from 'lucide-react';
 import MobilePageNavigation from '@/app/components/MobilePageNavigation';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
@@ -428,6 +428,7 @@ const CertificatesComponent = () => {
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
                     >
+                        <ExternalLinkIcon size={18} />
                         <span>View All Certifications</span>
                     </motion.a>
                 </div>

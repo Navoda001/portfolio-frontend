@@ -71,10 +71,10 @@ const Introduction = () => {
     ];
 
     const stats = [
-        { number: "9", label: "Years of\nexperience", icon: Code },
-        { number: "20", label: "Projects\ncompleted", icon: Briefcase },
-        { number: "6", label: "Technologies\nmastered", icon: Layers },
-        { number: "378", label: "Code\ncommits", icon: GitCommit },
+        { number: "10 +", label: "Projects\ncompleted", icon: Code },
+        { number: "723 +", label: "Code\ncommits", icon: GitCommit },
+        { number: "104 +", label: "Total\npull requests", icon: Briefcase },
+        { number: "20 +", label: "Technologies\nused", icon: Layers },
     ];
 
     const roles = [
