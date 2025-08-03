@@ -20,6 +20,8 @@ import {
 import { Typewriter } from 'react-simple-typewriter';
 import MobilePageNavigation from '@/app/components/MobilePageNavigation';
 import { usePathname } from 'next/navigation';
+import CountUp from 'react-countup';
+
 
 const Introduction = () => {
     const ref = useRef(null);
@@ -210,76 +212,37 @@ const Introduction = () => {
                         variants={itemVariants}
                         className="relative flex justify-center lg:justify-end mt-3"
                     >
-                        <div className="relative">
-                            {/* Outer Glow Ring */}
-                            <motion.div
-                                className="absolute inset-0 rounded-full opacity-50"
-                                style={{
-                                    background: "radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%)",
-                                    filter: "blur(20px)",
-                                    transform: "scale(1.3)",
-                                }}
-                                animate={{
-                                    opacity: [0.3, 0.8, 0.3],
-                                    scale: [1.3, 1.5, 1.3],
-                                }}
-                                transition={{
-                                    duration: 4,
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                }}
-                            />
-
-                            {/* Primary Rotating Border */}
-                            <motion.div
-                                className="absolute inset-0 rounded-full p-1"
-                                style={{
-                                    background: "conic-gradient(from 0deg, #10b981 0%, #059669 25%, #047857 50%, #065f46 75%, #10b981 100%)",
-                                }}
-                                animate={{ rotate: 360 }}
-                                transition={{
-                                    duration: 6,
-                                    repeat: Infinity,
-                                    ease: "linear",
-                                }}
+                        <div className="relative flex items-center justify-center">
+                            {/* Animated Circle */}
+                            <svg
+                                className="absolute w-[320px] h-[320px] lg:w-[420px] lg:h-[420px]"
+                                viewBox="0 0 420 420"
+                                fill="none"
                             >
-                                <div className="w-full h-full bg-gray-900 rounded-full" />
-                            </motion.div>
-
-                            {/* Secondary Counter-Rotating Border */}
-                            <motion.div
-                                className="absolute inset-0 rounded-full p-2"
-                                style={{
-                                    background: "conic-gradient(from 180deg, transparent 0%, #10b981 20%, transparent 40%, #10b981 60%, transparent 80%, #10b981 100%)",
-                                }}
-                                animate={{ rotate: -360 }}
-                                transition={{
-                                    duration: 10,
-                                    repeat: Infinity,
-                                    ease: "linear",
-                                }}
-                            >
-                                <div className="w-full h-full bg-transparent rounded-full" />
-                            </motion.div>
-
-                            {/* Pulsing Inner Ring */}
-                            <motion.div
-                                className="absolute inset-2 rounded-full border-2 border-emerald-400/30"
-                                animate={{
-                                    scale: [1, 1.05, 1],
-                                    borderColor: ["rgba(16, 185, 129, 0.3)", "rgba(16, 185, 129, 0.8)", "rgba(16, 185, 129, 0.3)"],
-                                }}
-                                transition={{
-                                    duration: 3,
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                }}
-                            />
+                                <motion.circle
+                                    cx="210"
+                                    cy="210"
+                                    r="206"
+                                    stroke="#34d399" // emerald-400 hex
+                                    strokeWidth="4"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    initial={{ strokeDasharray: "24 10 0 0" }}
+                                    animate={{
+                                        strokeDasharray: ["15 120 25 25", "16 25 92 72", "4 250 22 22"],
+                                        rotate: [120, 360],
+                                    }}
+                                    transition={{
+                                        duration: 10,
+                                        repeat: Infinity,
+                                        repeatType: "reverse",
+                                    }}
+                                />
+                            </svg>
 
                             {/* Profile Image */}
                             <motion.div
-                                className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden"
-                                style={{ margin: "8px" }}
+                                className="relative w-72 h-72 lg:w-96 lg:h-96 rounded-full overflow-hidden"
                                 initial={{ scale: 0.8, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                                 transition={{ delay: 0.8, duration: 0.8 }}
@@ -292,22 +255,7 @@ const Introduction = () => {
                                     className="object-cover"
                                     priority
                                 />
-
-                                {/* Image Overlay Effect */}
-                                <motion.div
-                                    className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 via-transparent to-emerald-600/20 rounded-full"
-                                    animate={{
-                                        opacity: [0, 0.3, 0],
-                                    }}
-                                    transition={{
-                                        duration: 5,
-                                        repeat: Infinity,
-                                        ease: "easeInOut",
-                                    }}
-                                />
                             </motion.div>
-
-
 
                             {/* Sparkle Effects */}
                             {[...Array(8)].map((_, i) => (
@@ -331,52 +279,55 @@ const Introduction = () => {
                                 />
                             ))}
                         </div>
+
                     </motion.div>
                 </motion.div>
 
                 {/* Stats Section */}
                 <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={mainControls}
-                    className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-16 border-t border-gray-800 mt-16"
+    variants={containerVariants}
+    initial="hidden"
+    animate={mainControls}
+    className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-16 border-t border-gray-800 mt-16"
+>
+    {stats.map((stat, index) => (
+        <motion.div
+            key={stat.label}
+            variants={itemVariants}
+            className="text-center group"
+            whileHover={{ y: -5 }}
+        >
+            <div className="flex flex-col items-center space-y-2">
+                <motion.div
+                    className="w-12 h-12 rounded-full bg-emerald-400/10 flex items-center justify-center mb-2 group-hover:bg-emerald-400/20 transition-colors duration-300"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
                 >
-                    {stats.map((stat, index) => (
-                        <motion.div
-                            key={stat.label}
-                            variants={itemVariants}
-                            className="text-center group"
-                            whileHover={{ y: -5 }}
-                        >
-                            <div className="flex flex-col items-center space-y-2">
-                                <motion.div
-                                    className="w-12 h-12 rounded-full bg-emerald-400/10 flex items-center justify-center mb-2 group-hover:bg-emerald-400/20 transition-colors duration-300"
-                                    whileHover={{ rotate: 360 }}
-                                    transition={{ duration: 0.5 }}
-                                >
-                                    <stat.icon className="text-emerald-400" size={24} />
-                                </motion.div>
-                                <motion.h3
-                                    className="text-4xl lg:text-5xl font-bold text-white"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ delay: 1.5 + index * 0.1 }}
-                                >
-                                    <motion.span
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        transition={{ delay: 1.8 + index * 0.1 }}
-                                    >
-                                        {stat.number}
-                                    </motion.span>
-                                </motion.h3>
-                                <p className="text-gray-400 text-sm whitespace-pre-line">
-                                    {stat.label}
-                                </p>
-                            </div>
-                        </motion.div>
-                    ))}
+                    <stat.icon className="text-emerald-400" size={24} />
                 </motion.div>
+                <motion.h3
+                    className="text-4xl lg:text-5xl font-bold text-white"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5 + index * 0.1 }}
+                >
+                    <CountUp
+                        start={0}
+                        end={parseInt(stat.number.replace(/[^0-9]/g, ''))}
+                        duration={2.5}
+                        delay={1.8 + index * 0.1}
+                        suffix={stat.number.includes('+') ? '+' : ''}
+                        enableScrollSpy
+                        scrollSpyOnce
+                    />
+                </motion.h3>
+                <p className="text-gray-400 text-sm whitespace-pre-line">
+                    {stat.label}
+                </p>
+            </div>
+        </motion.div>
+    ))}
+</motion.div>
             </div>
             <MobilePageNavigation currentPath={pathname} />
         </section>
