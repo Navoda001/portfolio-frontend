@@ -175,7 +175,7 @@ const CertificatesComponent = () => {
     };
 
     return (
-        <section className="py-20 pt-28 bg-gray-900 relative overflow-hidden">
+        <section className="py-20 bg-gray-900 relative overflow-hidden">
             {/* Background Effects */}
             <div className="absolute inset-0 overflow-hidden">
                 {[...Array(15)].map((_, i) => (

@@ -32,10 +32,12 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900`}
       >
         <Navbar /> {/* ✅ Show globally on all pages */}
-        {children}
+        <div className="mt-8">
+          {children}
+        </div>
       </body>
     </html>
   );

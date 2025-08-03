@@ -158,7 +158,7 @@ const ProjectShowcase = () => {
 
 
   return (
-    <section ref={ref} className="py-20 pt-28 bg-gray-900 relative overflow-hidden">
+    <section ref={ref} className="py-20 bg-gray-900 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (

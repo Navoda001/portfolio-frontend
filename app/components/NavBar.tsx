@@ -129,6 +129,7 @@ const Navbar = () => {
             <div className="pt-4 px-4">
               <Link
                 href="/pages/contactMe"
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="block w-full text-center px-6 py-3 bg-emerald-500 text-white text-sm font-semibold rounded-full hover:bg-emerald-600 transition-colors duration-300"
               >
                 Hire Me
