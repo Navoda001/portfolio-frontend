@@ -348,10 +348,8 @@ const CertificatesComponent = () => {
                                                     <ExternalLink className="w-3 h-3" />
                                                 </a>
                                             )}
-                                        </div>
-
-                                        {totalPages > 1 && (
-                                            <div className="flex justify-end space-x-2">
+                                            {totalPages > 1 && (
+                                            <div className="flex md:hidden justify-end space-x-4">
                                                 <motion.button
                                                     onClick={prev}
                                                     disabled={totalPages <= 1}
@@ -372,6 +370,9 @@ const CertificatesComponent = () => {
                                                 </motion.button>
                                             </div>
                                         )}
+                                        </div>
+
+                                        
                                     </div>
 
                                 </div>
