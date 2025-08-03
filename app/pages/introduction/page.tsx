@@ -86,13 +86,19 @@ const Introduction = () => {
         "Tech Explorer",
     ];
 
-    // ✅ Custom hook to handle multiple refs + inView tracking
-     const statRefs = Array(stats.length)
-        .fill(null)
-        .map(() => useRef<HTMLDivElement>(null));
-
-    // Call useInView individually for each ref — at top level
-    const statInViews = statRefs.map((ref) => useInView(ref, { once: true }));
+    const statRefs = useRef<React.RefObject<HTMLDivElement | null>[]>([]);
+    
+    if (statRefs.current.length !== stats.length) {
+        statRefs.current = Array.from({ length: stats.length }, () => createRef<HTMLDivElement>());
+    }
+    
+    // Call useInView for each ref individually (manual)
+    const inView0 = useInView(statRefs.current[0], { once: true });
+    const inView1 = useInView(statRefs.current[1], { once: true });
+    const inView2 = useInView(statRefs.current[2], { once: true });
+    const inView3 = useInView(statRefs.current[3], { once: true });
+    
+    const statInViews = [inView0, inView1, inView2, inView3];
 
     return (
         <section ref={ref} className="min-h-screen bg-gray-900 relative overflow-hidden">
@@ -291,14 +297,14 @@ const Introduction = () => {
                     {stats.map((stat, index) => {
                         const delay = 0.5 + index * 0.2;
                         const isVisible = statInViews[index];
-
+                    
                         return (
                             <motion.div
                                 key={stat.label}
                                 variants={itemVariants}
                                 className="text-center group"
                                 whileHover={{ y: -5 }}
-                                ref={statRefs[index]}
+                                ref={statRefs.current[index]}
                             >
                                 <div className="flex flex-col items-center space-y-2">
                                     {/* Icon */}
