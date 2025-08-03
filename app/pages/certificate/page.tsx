@@ -4,6 +4,7 @@ import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Award, Trophy, BookOpen, Calendar, ExternalLink, Filter, ChevronLeft, ChevronRight } from 'lucide-react';
 import MobilePageNavigation from '@/app/components/MobilePageNavigation';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 interface Certificate {
     id: string;
@@ -250,12 +251,12 @@ const CertificatesComponent = () => {
                     {filterButtons.map(({ key, label, icon: Icon }) => (
                         <motion.button
                             key={key}
-                            onClick={() => handleFilterChange(key)}  
+                            onClick={() => handleFilterChange(key)}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className={`flex items-center gap-2 px-6 py-3 rounded-full border-2 transition-all duration-300 ${filter === key
-                                    ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400'
-                                    : 'bg-slate-800/50 border-slate-700 text-gray-400 hover:border-emerald-500/50 hover:text-emerald-400'
+                                ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400'
+                                : 'bg-slate-800/50 border-slate-700 text-gray-400 hover:border-emerald-500/50 hover:text-emerald-400'
                                 }`}
                         >
                             <Icon className="w-4 h-4" />
@@ -288,11 +289,16 @@ const CertificatesComponent = () => {
                                 {/* Image */}
                                 {cert.image && (
                                     <div className="relative h-48 overflow-hidden">
-                                        <img
-                                            src={cert.image}
-                                            alt={cert.title}
-                                            className="w-full h-full object-fill transition-transform duration-500 group-hover:scale-110"
-                                        />
+                                        <div className="relative w-full h-full">
+                                            <Image
+                                                src={cert.image}
+                                                alt={cert.title}
+                                                fill
+                                                sizes="100vw"
+                                                className="object-fill transition-transform duration-500 group-hover:scale-110"
+                                            />
+                                        </div>
+
                                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
                                         <div className="absolute top-4 right-4 flex items-center gap-2 px-3 py-1 rounded-full backdrop-blur-sm border bg-emerald-500/20 border-emerald-500/40 text-emerald-300">
                                             {getTypeIcon(cert.type)}

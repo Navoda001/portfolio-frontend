@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 
 const flatSkills = [
     { name: 'Next.js', devicon: 'devicon-nextjs-plain' },
@@ -41,29 +41,27 @@ const TechStackSection = () => {
     const row1 = flatSkills.slice(0, half);
     const row2 = flatSkills.slice(half);
 
-    const autoScroll = () => {
-        // Stop auto scroll if user has interacted
+    const autoScroll = useCallback(() => {
         if (!row1Ref.current || !row2Ref.current || isDraggingRef.current || hasUserInteracted) return;
 
         row1Ref.current.scrollLeft += 0.5;
         row2Ref.current.scrollLeft += 0.5;
 
-        if (
-            row1Ref.current.scrollLeft >= row1Ref.current.scrollWidth - row1Ref.current.clientWidth
-        ) {
+        if (row1Ref.current.scrollLeft >= row1Ref.current.scrollWidth - row1Ref.current.clientWidth) {
             row1Ref.current.scrollLeft = 0;
             row2Ref.current.scrollLeft = 0;
         }
 
         animationRef.current = requestAnimationFrame(autoScroll);
-    };
+    }, [hasUserInteracted]);
 
     useEffect(() => {
         animationRef.current = requestAnimationFrame(autoScroll);
         return () => {
             if (animationRef.current) cancelAnimationFrame(animationRef.current);
         };
-    }, [hasUserInteracted]); // re-run if hasUserInteracted changes
+    }, [autoScroll]);
+
 
     const handleDragStart = (e: React.MouseEvent) => {
         isDraggingRef.current = true;

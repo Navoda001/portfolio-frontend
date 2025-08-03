@@ -27,10 +27,6 @@ interface ContactFormData {
   message: string;
 }
 
-interface ContactSectionProps {
-  onSubmit?: (data: ContactFormData) => Promise<void>;
-}
-
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
@@ -52,7 +48,7 @@ const statusVariants: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-const ContactMe: React.FC<ContactSectionProps> = ({ onSubmit }) => {
+const ContactMe = ( ) => {
   const [formData, setFormData] = useState<ContactFormData>({
     firstName: '',
     lastName: '',
@@ -114,13 +110,8 @@ const ContactMe: React.FC<ContactSectionProps> = ({ onSubmit }) => {
     setSubmitStatus('idle');
 
     try {
-      if (onSubmit) {
-        await onSubmit(formData);
-      } else {
-        await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
         console.log('Form submitted:', formData);
-      }
-
+      
       setSubmitStatus('success');
       setFormData({
         firstName: '',

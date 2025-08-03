@@ -13,6 +13,7 @@ import {
     Check
 } from 'lucide-react';
 import type { Variants } from "framer-motion";
+import Image from 'next/image';
 
 const EducationSection = () => {
     const ref = useRef(null);
@@ -239,7 +240,15 @@ const EducationSection = () => {
                                             className="inline-flex p-1 items-center bg-emerald-500/10 border-2 border-emerald-400 rounded-full"
                                             whileHover={{ scale: 1.05 }}
                                         >
-                                            <img className="w-12 h-12 rounded-full object-cover" src={item.img} alt="Education " />
+                                            <div className="relative w-12 h-12">
+                                                <Image
+                                                    className="rounded-full object-cover"
+                                                    src={item.img}
+                                                    alt="Education"
+                                                    fill
+                                                    sizes="48px"
+                                                />
+                                            </div>
                                         </motion.div>
 
 
