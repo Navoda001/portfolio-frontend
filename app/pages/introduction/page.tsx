@@ -2,7 +2,7 @@
 
 import { motion, useAnimation, useInView } from 'framer-motion';
 import type { Variants } from "framer-motion";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import {
     Github,
@@ -20,14 +20,20 @@ import {
 import { Typewriter } from 'react-simple-typewriter';
 import MobilePageNavigation from '@/app/components/MobilePageNavigation';
 import { usePathname } from 'next/navigation';
-import CountUp from 'react-countup';
+import dynamic from "next/dynamic";
 
+const CountUp = dynamic(() => import("react-countup"), { ssr: false });
 
 const Introduction = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
     const mainControls = useAnimation();
     const pathname = usePathname();
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
 
     useEffect(() => {
         if (isInView) {
@@ -62,7 +68,7 @@ const Introduction = () => {
         { icon: Github, href: "https://github.com/Navoda001", label: "GitHub" },
         { icon: Linkedin, href: "https://www.linkedin.com/in/navoda001", label: "LinkedIn" },
         { icon: Mail, href: "mailto:navodachathurya2001@gmail.com", label: "Gmail" },
-        { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+        { icon: Facebook, href: "https://www.facebook.com/share/1BsnzU3eni/?mibextid=wwXIfr", label: "Facebook" },
     ];
 
     const stats = [
@@ -166,10 +172,21 @@ const Introduction = () => {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <span className="relative z-10 flex items-center gap-2">
+                                <span
+                                    onClick={() => {
+                                        const link = document.createElement("a");
+                                        link.href = "/Navoda_Chathurya_CV.pdf";
+                                        link.download = "Navoda_Chathurya_CV.pdf";
+                                        document.body.appendChild(link);
+                                        link.click();
+                                        document.body.removeChild(link);
+                                    }}
+                                    className="relative z-10 flex items-center gap-2"
+                                >
                                     <Download size={20} />
                                     DOWNLOAD CV
                                 </span>
+
                                 <motion.div
                                     className="absolute inset-0 bg-emerald-400"
                                     initial={{ x: "-100%" }}
@@ -285,49 +302,68 @@ const Introduction = () => {
 
                 {/* Stats Section */}
                 <motion.div
-    variants={containerVariants}
-    initial="hidden"
-    animate={mainControls}
-    className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-16 border-t border-gray-800 mt-16"
->
-    {stats.map((stat, index) => (
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={mainControls}
+                    className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-16 border-t border-gray-800 mt-16"
+                >
+                    {stats.map((stat, index) => {
+  const delay = 0.5 + index * 0.2;
+
+  // Track if THIS stat is visible
+  const statRef = useRef(null);
+  const statInView = useInView(statRef, { once: true });
+
+  return (
+    <motion.div
+      key={stat.label}
+      variants={itemVariants}
+      className="text-center group"
+      whileHover={{ y: -5 }}
+      ref={statRef}
+    >
+      <div className="flex flex-col items-center space-y-2">
+        {/* Icon */}
         <motion.div
-            key={stat.label}
-            variants={itemVariants}
-            className="text-center group"
-            whileHover={{ y: -5 }}
+          className="w-12 h-12 rounded-full bg-emerald-400/10 flex items-center justify-center mb-2 group-hover:bg-emerald-400/20 transition-colors duration-300"
+          whileHover={{ rotate: 360 }}
+          transition={{ duration: 0.5 }}
         >
-            <div className="flex flex-col items-center space-y-2">
-                <motion.div
-                    className="w-12 h-12 rounded-full bg-emerald-400/10 flex items-center justify-center mb-2 group-hover:bg-emerald-400/20 transition-colors duration-300"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <stat.icon className="text-emerald-400" size={24} />
-                </motion.div>
-                <motion.h3
-                    className="text-4xl lg:text-5xl font-bold text-white"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.5 + index * 0.1 }}
-                >
-                    <CountUp
-                        start={0}
-                        end={parseInt(stat.number.replace(/[^0-9]/g, ''))}
-                        duration={2.5}
-                        delay={1.8 + index * 0.1}
-                        suffix={stat.number.includes('+') ? '+' : ''}
-                        enableScrollSpy
-                        scrollSpyOnce
-                    />
-                </motion.h3>
-                <p className="text-gray-400 text-sm whitespace-pre-line">
-                    {stat.label}
-                </p>
-            </div>
+          <stat.icon className="text-emerald-400" size={24} />
         </motion.div>
-    ))}
-</motion.div>
+
+        {/* Number + CountUp */}
+        <motion.h3
+          className="text-4xl lg:text-5xl font-bold text-white"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay, duration: 0.6, ease: "easeOut" }}
+        >
+          {isClient && statInView && (
+            <CountUp
+              start={0}
+              end={parseInt(stat.number.replace(/[^0-9]/g, ""))}
+              duration={2}
+              suffix={stat.number.includes("+") ? "+" : ""}
+            />
+          )}
+        </motion.h3>
+
+        {/* Label */}
+        <motion.p
+          className="text-gray-400 text-sm whitespace-pre-line"
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: delay + 0.3, duration: 0.5 }}
+        >
+          {stat.label}
+        </motion.p>
+      </div>
+    </motion.div>
+  );
+})}
+
+                </motion.div>
             </div>
             <MobilePageNavigation currentPath={pathname} />
         </section>

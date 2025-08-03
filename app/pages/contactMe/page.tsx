@@ -7,6 +7,15 @@ import { Send, User, Mail, Phone, MessageSquare, Briefcase, MapPin } from 'lucid
 import MobilePageNavigation from '@/app/components/MobilePageNavigation';
 import { usePathname } from 'next/navigation';
 
+import { FaLinkedinIn, FaGithub, FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
+
+const socialLinks = [
+  { icon: FaLinkedinIn, href: "https://www.linkedin.com/in/navoda001", color: "bg-[#0077B5]" },
+  { icon: FaFacebook, href: "https://www.facebook.com/share/1BsnzU3eni/?mibextid=wwXIfr", color: "bg-[#1877F2]" },
+  { icon: FaWhatsapp, href: "https://api.whatsapp.com/send/?phone=94762085246&text&type=phone_number&app_absent=0", color: "bg-[#25D366]" },
+  { icon: FaInstagram, href: "https://www.instagram.com/navoda_c001?igsh=MXVkeGpzYXJ3NHF3bg%3D%3D&utm_source=qr", color: "bg-[#E4405F]" }, 
+];
+
 // Types
 interface ContactFormData {
   firstName: string;
@@ -65,9 +74,10 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
   ];
 
   const contactInfo = {
-    phone: '(+40) 321 654 876',
-    email: 'youremail@email.com',
-    address: 'Code Corner, Tech Town 13579',
+    phone: '(+94) 76 208 5246',
+    email: 'navodachathurya2001@gmail.com',
+    address: 'Moratuwa, Sri Lanka',
+    whatsapp: '076 208 5246',
   };
 
   // Animation controls for section fade in on scroll
@@ -285,6 +295,33 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onSubmit }) => {
                   <p className="text-gray-300 text-sm">Address</p>
                   <p className="text-white font-medium">{contactInfo.address}</p>
                 </div>
+              </div> 
+            </div>
+            <div className="flex flex-col items-center gap-6 mt-20">
+              {/* Heading */}
+              <h2 className="text-xl font-semibold text-white">
+                Connect with me on{" "}
+                <span className="bg-gradient-to-r from-emerald-200 to-emerald-600 text-transparent bg-clip-text">
+                  Social Media
+                </span>
+              </h2>
+
+              {/* Icons */}
+              <div className="flex gap-6">
+                {socialLinks.map((social, i) => (
+                  <motion.a
+                    key={i}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${social.color} w-12 h-12 flex items-center justify-center rounded-full text-white shadow-lg`}
+                    whileHover={{ scale: 1.15, rotate: 5 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <social.icon size={20} />
+                  </motion.a>
+                ))}
               </div>
             </div>
           </motion.div>
