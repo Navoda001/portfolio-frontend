@@ -205,7 +205,7 @@ const ContactMe = () => {
   return (
     <motion.section
       ref={ref}
-      className="pt-20 min-h-screen bg-gray-900 relative overflow-hidden"
+      className="pt-17 p-3 min-h-screen bg-gray-900 relative overflow-hidden"
       variants={containerVariants}
       initial="hidden"
       animate={mainControls}
