@@ -244,7 +244,7 @@ const CertificatesComponent = () => {
                     transition={{ delay: 0.2, duration: 0.8 }}
                     className="flex flex-wrap items-center justify-center gap-4 mb-12"
                 >
-                    <div className="flex items-center gap-2 text-emerald-400">
+                    <div className="items-center gap-2 text-emerald-400 hidden md:flex">
                         <Filter className="w-5 h-5" />
                         <span className="font-medium">Filter by:</span>
                     </div>

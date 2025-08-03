@@ -158,7 +158,7 @@ const ProjectShowcase = () => {
 
 
   return (
-    <section ref={ref} className="py-20 bg-gray-900 relative overflow-hidden">
+    <section ref={ref} className="py-20  bg-gray-900 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
@@ -200,6 +200,22 @@ const ProjectShowcase = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
+        >
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <p className="w-8 h-8 text-emerald-400" />
+            <h1 className="text-4xl md:text-5xl font-bold text-white">
+              Featured <span className="text-emerald-400">Projects</span>
+            </h1>
+          </div>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            A selection of my most notable projects, highlighting creativity, technical expertise, and real-world problem-solving.
+          </p>
+        </motion.div>
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={mainControls}
@@ -230,13 +246,23 @@ const ProjectShowcase = () => {
                 className="space-y-6"
               >
                 {/* Category Badge */}
-                <motion.div
-                  className="inline-flex items-center space-x-2 bg-emerald-500/10 text-emerald-400 px-4 py-2 rounded-full text-sm font-semibold"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <Code size={16} />
-                  <span>{currentProjectData.category}</span>
-                </motion.div>
+                <div className='flex justify-between items-center'>
+                  <motion.div
+                    className="inline-flex items-center space-x-2 bg-emerald-500/10 text-emerald-400 px-4 py-2 rounded-full text-sm font-semibold"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <Code size={16} />
+                    <span>{currentProjectData.category}</span>
+                  </motion.div>
+                  <motion.div
+                    className="inline-flex md:hidden items-center space-x-2 bg-emerald-500/10 text-emerald-400 px-4 py-2 rounded-full text-sm font-semibold"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <span>
+                      {currentProjectData.type2}
+                    </span>
+                  </motion.div>
+                </div>
 
                 {/* Title */}
                 <motion.h3
@@ -278,7 +304,7 @@ const ProjectShowcase = () => {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex items-center space-x-4 pt-4">
+                <div className="flex flex-wrap items-center gap-4 pt-4">
                   {currentProjectData.liveUrl && (
                     <motion.a
                       href={currentProjectData.liveUrl}
@@ -320,6 +346,7 @@ const ProjectShowcase = () => {
                       <span>View FrontEnd Code</span>
                     </motion.a>
                   )}
+
                   {currentProjectData.backEnd && (
                     <motion.a
                       href={currentProjectData.backEnd}
@@ -333,6 +360,7 @@ const ProjectShowcase = () => {
                       <span>View BackEnd Code</span>
                     </motion.a>
                   )}
+
                   {currentProjectData.githubUrl && (
                     <motion.a
                       href={currentProjectData.githubUrl}
@@ -346,8 +374,8 @@ const ProjectShowcase = () => {
                       <span>View Code</span>
                     </motion.a>
                   )}
-
                 </div>
+
               </motion.div>
             </AnimatePresence>
           </motion.div>
@@ -360,13 +388,31 @@ const ProjectShowcase = () => {
             onMouseLeave={() => setIsHovered(false)}
           >
             <motion.div
-              className="inline-flex mb-6 items-center space-x-2 bg-emerald-500/10 text-emerald-400 px-4 py-2 rounded-full text-sm font-semibold"
+              className="hidden md:inline-flex mb-6 items-center space-x-2 bg-emerald-500/10 text-emerald-400 px-4 py-2 rounded-full text-sm font-semibold"
               whileHover={{ scale: 1.05 }}
             >
               <span>
                 {currentProjectData.type2}
               </span>
             </motion.div>
+            <div className="md:hidden flex pb-5 justify-center space-x-2">
+              <motion.button
+                onClick={prevProject}
+                className="w-fit h-12 p-2 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-emerald-600 transition-colors duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                Prev Project
+              </motion.button>
+              <motion.button
+                onClick={nextProject}
+                className="w-fit h-12 p-2 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-emerald-600 transition-colors duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                Next Project
+              </motion.button>
+            </div>
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentProject}
@@ -445,7 +491,7 @@ const ProjectShowcase = () => {
 
             </AnimatePresence>
             {/* Navigation Arrows */}
-            <div className="flex pt-5 justify-end space-x-2">
+            <div className="hidden md:flex pt-5 justify-end space-x-2">
               <motion.button
                 onClick={prevProject}
                 className="w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-emerald-600 transition-colors duration-300"

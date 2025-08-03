@@ -36,28 +36,37 @@ const AboutMe = () => {
                         {[
                             { label: 'Name', value: info.name },
                             { label: 'Nationality', value: info.nationality },
-                            { label: 'Email', value: info.email },
-                        ].map(({ label, value }, i) => (
+                            { label: 'Email', value: info.email, type: 'email' }, // added type
+                        ].map(({ label, value, type }, i) => (
                             <motion.div
                                 key={label}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.1 * i, duration: 0.5 }}
-                                className="flex items-center space-x-2"
+                                className="flex flex-col sm:flex-row sm:items-center sm:space-x-2"
                             >
                                 <h3 className="font-semibold text-emerald-400 min-w-[110px]">{label}:</h3>
-                                <p className="text-lg">{value}</p>
+                                {type === 'email' ? (
+                                    <a
+                                        href={`mailto:${value}`}
+                                        className="text-lg break-words sm:break-normal hover:underline"
+                                    >
+                                        {value}
+                                    </a>
+
+                                ) : (
+                                    <p className="text-lg">{value}</p>
+                                )}
                             </motion.div>
                         ))}
                     </div>
 
-                    {/* Right */}
                     <div className="space-y-4">
                         {[
-                            { label: 'Phone', value: info.phone },
+                            { label: 'Phone', value: info.phone, type: 'phone' },
                             { label: 'Language', value: info.language },
-                        ].map(({ label, value }, i) => (
+                        ].map(({ label, value, type }, i) => (
                             <motion.div
                                 key={label}
                                 initial={{ opacity: 0, y: 30 }}
@@ -67,10 +76,20 @@ const AboutMe = () => {
                                 className="flex items-center space-x-2"
                             >
                                 <h3 className="font-semibold text-emerald-400 min-w-[110px]">{label}:</h3>
-                                <p className="text-lg">{value}</p>
+                                {type === 'phone' ? (
+                                    <a
+                                        href={`tel:${value.replace(/\s+/g, '')}`} // remove spaces for tel links
+                                        className="text-lg sm:break-normal break-words hover:underline"
+                                    >
+                                        {value}
+                                    </a>
+                                ) : (
+                                    <p className="text-lg">{value}</p>
+                                )}
                             </motion.div>
                         ))}
                     </div>
+
                 </div>
 
                 <div className="mt-10 h-1 w-24 bg-gradient-to-r from-emerald-400/50 to-transparent rounded-full mx-auto opacity-60" />
