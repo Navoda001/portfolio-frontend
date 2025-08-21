@@ -72,9 +72,9 @@ const Introduction = () => {
     ];
 
     const stats = [
-        { number: "10 +", label: "Projects\ncompleted", icon: Code },
-        { number: "723 +", label: "Code\ncommits", icon: GitCommit },
-        { number: "104 +", label: "Total\npull requests", icon: Briefcase },
+        { number: "10 +", label: "Repositories", icon: Code },
+        { number: "750 +", label: "Code\ncommits", icon: GitCommit },
+        { number: "100 +", label: "Total\npull requests", icon: Briefcase },
         { number: "20 +", label: "Technologies\nused", icon: Layers },
     ];
 
@@ -82,23 +82,26 @@ const Introduction = () => {
         "Software Developer",
         "Full Stack Developer",
         "Embedded Systems Enthusiast",
-        "React & Spring Boot Developer",
+        "Spring Boot Developer",
         "ASP.NET Developer",
         "Tech Explorer",
+        "Problem Solver",
+        "Frontend Developer",
     ];
 
+
     const statRefs = useRef<React.RefObject<HTMLDivElement | null>[]>([]);
-    
+
     if (statRefs.current.length !== stats.length) {
         statRefs.current = Array.from({ length: stats.length }, () => createRef<HTMLDivElement>());
     }
-    
+
     // Call useInView for each ref individually (manual)
     const inView0 = useInView(statRefs.current[0], { once: true });
     const inView1 = useInView(statRefs.current[1], { once: true });
     const inView2 = useInView(statRefs.current[2], { once: true });
     const inView3 = useInView(statRefs.current[3], { once: true });
-    
+
     const statInViews = [inView0, inView1, inView2, inView3];
 
     return (
@@ -298,7 +301,7 @@ const Introduction = () => {
                     {stats.map((stat, index) => {
                         const delay = 0.5 + index * 0.2;
                         const isVisible = statInViews[index];
-                    
+
                         return (
                             <motion.div
                                 key={stat.label}
@@ -350,7 +353,7 @@ const Introduction = () => {
                 </motion.div>
             </div>
             <MobilePageNavigation currentPath={pathname} />
-            <Footer/>
+            <Footer />
         </section>
     );
 };
