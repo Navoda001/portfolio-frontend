@@ -242,7 +242,7 @@ const ContactMe = () => {
           transition={{ delay: 0.1, duration: 0.5 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Let&apos;s work <span className="text-emerald-400">together</span>
+            Let&apos;s work <span className="text-emerald-400">Together</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             Have a project in mind? I&apos;d love to hear about it. Let&apos;s discuss how we can bring
@@ -381,7 +381,7 @@ const ContactMe = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 { id: 'email', label: 'Email Address', icon: Mail, type: 'email', required: true, placeholder: 'john@example.com' },
-                { id: 'phone', label: 'Phone Number', icon: Phone, type: 'tel', required: false, placeholder: '+1 (555) 123-4567' },
+                { id: 'phone', label: 'Phone Number', icon: Phone, type: 'tel', required: false, placeholder: '+94 7712345678' },
               ].map(({ id, label, icon: Icon, type, required, placeholder }) => (
                 <motion.div
                   key={id}
