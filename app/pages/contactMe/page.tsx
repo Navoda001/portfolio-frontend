@@ -381,7 +381,7 @@ const ContactMe = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 { id: 'email', label: 'Email Address', icon: Mail, type: 'email', required: true, placeholder: 'john@example.com' },
-                { id: 'phone', label: 'Phone Number', icon: Phone, type: 'tel', required: false, placeholder: '+94 7712345678' },
+                { id: 'phone', label: 'Phone Number', icon: Phone, type: 'tel', required: false, placeholder: '+94 77 123 4567' },
               ].map(({ id, label, icon: Icon, type, required, placeholder }) => (
                 <motion.div
                   key={id}
