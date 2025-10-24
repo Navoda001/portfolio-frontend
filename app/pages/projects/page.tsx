@@ -38,12 +38,28 @@ const ProjectShowcase = () => {
   const projects = [
     {
       id: "01",
+      title: "JMHStore - Medical Center Management System (2025)",
+      category: "Web Development",
+      description: "JMHStore is a comprehensive web-based management system developed for a medical center to automate and simplify daily operations. It enables admins and cashiers to efficiently manage sales, expenses, and investigation invoices while maintaining accurate financial and inventory records. The system features batch-wise medicine tracking with expiry alerts, ensuring timely stock updates and preventing product wastage. It also supports role-based access control, daily balance calculations, and detailed transaction reporting. Currently deployed and maintained online, JMHStore improves accuracy, transparency, and overall efficiency in healthcare service management while continuously evolving based on client feedback.",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Spring Boot", "Spring Security", "JWT", "Spring Data JPA", "MySQL", "Docker", "Railway", "Vercel"],
+      image: "/project/project7.png",
+      liveUrl: "",
+      githubUrl: "",
+      frontEnd: "",
+      backEnd: "",
+      type: "Full Stack",
+      type2: "Client Project",
+      year: "2025",
+      featured: true
+    },
+    {
+      id: "02",
       title: "PresCrypt",
       category: "Web Development",
       description: "PresCrypt is a comprehensive healthcare management system designed to improve the efficiency and security of doctor-patient interactions. It enables patients to easily book and manage appointments, while doctors can create, update, and share prescriptions securely. The platform also provides an admin portal for overseeing system activities, managing user accounts, and approving doctor registrations. With features like prescription history tracking, real-time notifications, and appointment-based secure messaging, PresCrypt ensures smooth communication, accurate medical record management, and improved patient care.",
       technologies: ["Next.js", "Asp.Net", "OpenMRS", "SQL Server", "Flask", "Gemini", "Tailwind CSS", "Material UI", "Docker"],
-      image: "/project/project1.jpg",
-      liveUrl: "",
+      image: "/project/project1.png",
+      liveUrl: "https://www.linkedin.com/posts/navoda001_softwareengineering-nextjs-aspnetcore-activity-7386073258619740160-ndOE?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEtsOv0Bzr70KXG8N18DI1gRbYlq1XKOb-U",
       githubUrl: "",
       frontEnd: "https://github.com/TechGenPioneers/PresCrypt",
       backEnd: "https://github.com/TechGenPioneers/PresCrypt-Backend",
@@ -53,7 +69,7 @@ const ProjectShowcase = () => {
       featured: true
     },
     {
-      id: "02",
+      id: "03",
       title: "TrackMyItem",
       category: "Web Development",
       description: "TrackMyItem is a web-based Lost and Found management system designed to streamline the process of reporting, tracking, and reclaiming lost or found items within an organization or community. The platform allows users to securely register and log in, report items with detailed descriptions and images, search and filter items by status (Lost, Found, Claimed), and request claims for matching found items. An integrated admin panel enables administrators to manage users, item statuses, and claim requests efficiently, ensuring smooth operations and transparent communication.",
@@ -69,7 +85,7 @@ const ProjectShowcase = () => {
       featured: true
     },
     {
-      id: "03",
+      id: "04",
       title: "EventUni",
       category: "Web Development",
       description: "EventUni is an innovative event management platform tailored for Sri Lankan universities and institutes, providing a centralized hub for browsing, creating, and managing campus events. It addresses the problem of fragmented event communication across platforms like WhatsApp and social media by centralizing event details, ensuring students, faculty, and the wider community stay informed and engaged. The platform enables event creation, ticket registration or purchase, tag-based searching, and booking management through personalized dashboards, while administrators have tools to review creator requests and monitor event activities efficiently.",
@@ -86,7 +102,7 @@ const ProjectShowcase = () => {
       featured: true
     },
     {
-      id: "04",
+      id: "05",
       title: "Personal Portfolio",
       category: "Web Development",
       description: "A modern, responsive personal portfolio website designed to showcase my skills, projects, and professional journey. The site features a clean and interactive UI with smooth animations, a projects gallery, an about section, and a contact form for easy communication. It is optimized for both desktop and mobile devices, ensuring a seamless browsing experience for visitors.",
@@ -100,7 +116,7 @@ const ProjectShowcase = () => {
       featured: true
     },
     {
-      id: "05",
+      id: "06",
       title: "Course Management System",
       category: "Desktop App",
       description: "Course Management System is a desktop-based application designed to streamline course enrollment, student management, and reporting for educational institutions. It enables students, faculty, and administrators to securely log in, manage courses, register for classes, and generate enrollment reports. The system supports role-based access control (RBAC) to ensure that each user type—student, faculty, or admin—can perform only their authorized tasks. Core features include creating and updating course and student records, enrolling or dropping courses, viewing real-time course availability, and generating statistical reports for administrators.",
@@ -114,7 +130,7 @@ const ProjectShowcase = () => {
       featured: true
     },
     {
-      id: "06",
+      id: "07",
       title: "Place Order Application",
       category: "Desktop App",
       description: "Place Order Application is a Java-based desktop solution designed to simplify customer order processing and inventory management for businesses. The system allows users to search for customers and items, create orders, and automatically update inventory levels. It features an intuitive interface where users can enter order details, review items in an order summary table, and finalize orders seamlessly.",

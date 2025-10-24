@@ -55,8 +55,27 @@ const CertificatesComponent = () => {
     const pathname = usePathname();
 
     const certificates: Certificate[] = [
+
         {
             id: '1',
+            title: 'CodeRally 6.0',
+            issuer: 'IEEE Computer Society Student Branch Chapter of IIT',
+            date: '2025',
+            type: 'competition',
+            description: 'Participated in the Advanced Tier of the Final 24-Hour Hackathon of CodeRally 6.0, organized by the IEEE Computer Society Student Branch Chapter of IIT. Competed as part of Team JrSharks, tackling challenging problem statements under tight time constraints and demonstrating strong teamwork, perseverance, and technical problem-solving skills throughout the 24-hour coding challenge.',
+            credentialId: '',
+            credentialUrl: '',
+            skills: [
+                'Algorithms',
+                'Problem Solving',
+                'Time Management',
+                'Teamwork',
+                'Competitive Programming'
+            ],
+            image: '/certificate/competition4.jpg',
+        },
+        {
+            id: '2',
             title: 'Innovate with Ballerina Coding Challenge',
             issuer: 'WSO2',
             date: '2024',
@@ -68,7 +87,19 @@ const CertificatesComponent = () => {
             image: '/certificate/competition1.png',
         },
         {
-            id: '2',
+            id: '3',
+            title: 'AlgoXplore 1.0',
+            issuer: 'Hackathon Hub of NSBM Green University',
+            date: '2025',
+            type: 'competition',
+            description: 'Participated in AlgoXplore 1.0, organized by the Hackathon Hub of NSBM Green University. Competed as part of a team to solve algorithmic challenges and Capture The Flag (CTF) tasks, enhancing technical knowledge, problem-solving abilities, and collaboration skills.',
+            credentialId: '',
+            credentialUrl: '',
+            skills: ['Algorithms', 'CTF Challenges', 'Cybersecurity', 'Problem Solving', 'Teamwork', 'Analytical Thinking'],
+            image: '/certificate/competition3.jpeg',
+        },
+        {
+            id: '4',
             title: ' MoraXtreme 9.0',
             issuer: 'IEEE Student Branch University of Moratuwa',
             date: '2024-11-19',
@@ -85,19 +116,7 @@ const CertificatesComponent = () => {
             image: '/certificate/competition2.jpeg',
         },
         {
-            id: '3',
-            title: 'AlgoXplore 1.0',
-            issuer: 'Hackathon Hub of NSBM Green University',
-            date: '2025',
-            type: 'competition',
-            description: 'Participated in AlgoXplore 1.0, organized by the Hackathon Hub of NSBM Green University. Competed as part of a team to solve algorithmic challenges and Capture The Flag (CTF) tasks, enhancing technical knowledge, problem-solving abilities, and collaboration skills.',
-            credentialId: '',
-            credentialUrl: '',
-            skills: ['Algorithms', 'CTF Challenges', 'Cybersecurity', 'Problem Solving', 'Teamwork', 'Analytical Thinking'],
-            image: '/certificate/competition3.jpeg',
-        },
-        {
-            id: '4',
+            id: '5',
             title: ' Python for Beginners',
             issuer: 'Centre for Open & Distance Learning (CODL) University of Moratuwa, Sri Lanka',
             date: '2023-07-19',
@@ -109,7 +128,7 @@ const CertificatesComponent = () => {
             image: '/certificate/learning1.png',
         },
         {
-            id: '5',
+            id: '6',
             title: 'Web Design for Beginners',
             issuer: 'Centre for Open & Distance Learning (CODL) University of Moratuwa, Sri Lanka',
             date: '2023-09',
