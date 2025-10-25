@@ -175,7 +175,12 @@ const Introduction = () => {
                             variants={itemVariants}
                             className="text-gray-300 text-lg leading-relaxed max-w-xl"
                         >
-                            A third-year undergraduate at the Faculty of Information Technology, University of Moratuwa, with hands-on experience in full-stack development and embedded systems. Skilled in Java, JavaScript, and C, with a strong interest in building real-time web applications and hardware-integrated solutions. Passionate about solving practical problems through technology and eager to contribute in dynamic, team-oriented environments.
+                            I am a third-year IT undergraduate with a strong passion for software development. Through my
+                            academic journey and project work, I have gained hands-on experience in building full-stack
+                            applications using React, Next.js, Spring Boot, and ASP.NET. I have developed strong skills in
+                            programming, problem-solving, and creating user-friendly solutions. I am eager to apply and further
+                            expand my abilities by contributing to impactful projects while continuously growing and learning new
+                            technologies.
                         </motion.p>
 
                         {/* CTA + Social Links */}
