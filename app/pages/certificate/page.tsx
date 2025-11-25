@@ -55,9 +55,26 @@ const CertificatesComponent = () => {
     const pathname = usePathname();
 
     const certificates: Certificate[] = [
-
         {
             id: '1',
+            title: 'JPuraXtreme 2.0',
+            issuer: 'IEEE Computer Society Student Branch Chapter USJ',
+            date: '2025',
+            type: 'competition',
+            description: 'Participated in JPuraXtreme 2.0, a competitive programming event organized by the IEEE Computer Society Student Branch Chapter of the University of Sri Jayewardenepura. Collaborated with teammates to solve challenging algorithmic problems under time pressure, improving skills in coding, logical reasoning, and teamwork.',
+            credentialId: '',
+            skills: [
+                'Algorithms',
+                'Problem Solving',
+                'Teamwork',
+                'Critical Thinking',
+                'Competitive Programming'
+            ],
+            image: '/certificate/competition5.png'
+        },
+        {
+
+            id: '2',
             title: 'CodeRally 6.0',
             issuer: 'IEEE Computer Society Student Branch Chapter of IIT',
             date: '2025',
@@ -75,7 +92,7 @@ const CertificatesComponent = () => {
             image: '/certificate/competition4.jpg',
         },
         {
-            id: '2',
+            id: '3',
             title: 'Innovate with Ballerina Coding Challenge',
             issuer: 'WSO2',
             date: '2024',
@@ -87,7 +104,7 @@ const CertificatesComponent = () => {
             image: '/certificate/competition1.png',
         },
         {
-            id: '3',
+            id: '4',
             title: 'AlgoXplore 1.0',
             issuer: 'Hackathon Hub of NSBM Green University',
             date: '2025',
@@ -99,7 +116,7 @@ const CertificatesComponent = () => {
             image: '/certificate/competition3.jpeg',
         },
         {
-            id: '4',
+            id: '5',
             title: ' MoraXtreme 9.0',
             issuer: 'IEEE Student Branch University of Moratuwa',
             date: '2024-11-19',
@@ -116,7 +133,7 @@ const CertificatesComponent = () => {
             image: '/certificate/competition2.jpeg',
         },
         {
-            id: '5',
+            id: '6',
             title: ' Python for Beginners',
             issuer: 'Centre for Open & Distance Learning (CODL) University of Moratuwa, Sri Lanka',
             date: '2023-07-19',
@@ -128,7 +145,7 @@ const CertificatesComponent = () => {
             image: '/certificate/learning1.png',
         },
         {
-            id: '6',
+            id: '7',
             title: 'Web Design for Beginners',
             issuer: 'Centre for Open & Distance Learning (CODL) University of Moratuwa, Sri Lanka',
             date: '2023-09',
@@ -138,7 +155,7 @@ const CertificatesComponent = () => {
             credentialId: 'zhUKF5f0Ai',
             credentialUrl: 'https://open.uom.lk/verify',
             image: '/certificate/learning2.jpeg',
-        },
+        }
     ];
 
     // Responsive maxVisible cards (1 on mobile, 3 on desktop)
