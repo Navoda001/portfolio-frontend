@@ -56,25 +56,8 @@ const CertificatesComponent = () => {
 
     const certificates: Certificate[] = [
         {
-            id: '1',
-            title: 'JPuraXtreme 2.0',
-            issuer: 'IEEE Computer Society Student Branch Chapter USJ',
-            date: '2025',
-            type: 'competition',
-            description: 'Participated in JPuraXtreme 2.0, a competitive programming event organized by the IEEE Computer Society Student Branch Chapter of the University of Sri Jayewardenepura. Collaborated with teammates to solve challenging algorithmic problems under time pressure, improving skills in coding, logical reasoning, and teamwork.',
-            credentialId: '',
-            skills: [
-                'Algorithms',
-                'Problem Solving',
-                'Teamwork',
-                'Critical Thinking',
-                'Competitive Programming'
-            ],
-            image: '/certificate/competition5.png'
-        },
-        {
 
-            id: '2',
+            id: '1',
             title: 'CodeRally 6.0',
             issuer: 'IEEE Computer Society Student Branch Chapter of IIT',
             date: '2025',
@@ -90,6 +73,23 @@ const CertificatesComponent = () => {
                 'Competitive Programming'
             ],
             image: '/certificate/competition4.jpg',
+        },
+         {
+            id: '2',
+            title: 'JPuraXtreme 2.0',
+            issuer: 'IEEE Computer Society Student Branch Chapter USJ',
+            date: '2025',
+            type: 'competition',
+            description: 'Participated in JPuraXtreme 2.0, a competitive programming event organized by the IEEE Computer Society Student Branch Chapter of the University of Sri Jayewardenepura. Collaborated with teammates to solve challenging algorithmic problems under time pressure, improving skills in coding, logical reasoning, and teamwork.',
+            credentialId: '',
+            skills: [
+                'Algorithms',
+                'Problem Solving',
+                'Teamwork',
+                'Critical Thinking',
+                'Competitive Programming'
+            ],
+            image: '/certificate/competition5.png'
         },
         {
             id: '3',
